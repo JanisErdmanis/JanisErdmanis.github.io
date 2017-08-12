@@ -1,0 +1,433 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>Blog</title>
+
+	<!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- CSS
+  ================================================== -->
+<link rel="stylesheet" href="../stylesheets/base.css">
+<link rel="stylesheet" href="../stylesheets/skeleton.css">
+<link rel="stylesheet" href="../stylesheets/layout.css">
+
+        <style type="text/css">
+          b {
+          font-weight: bold; 
+          }
+          body {
+          font-size:12pt;font-family:"PT Serif", serif;
+          text-rendering: optimizeLegibility;
+          hyphens:auto
+          }
+          pre {
+          border: 1px solid #ccc;
+          box-shadow: 3px 3px 3px #eee;
+          padding: 8pt;
+          font-family: monospace;
+          font-size:10pt;
+          overflow: auto;
+          margin: 1.2em;
+          }
+          pre.src {
+          position: relative;
+          overflow: visible;
+          padding-top: 1.2em;
+          }
+        </style>
+	<!-- Favicons
+	================================================== -->
+    <!-- <link rel="shortcut icon" href="images/favicon.ico"> -->
+<script type="text/x-mathjax-config"> 
+    MathJax.Hub.Config({"HTML-CSS": { scale: 75}});
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+	<div class="container">
+	  
+          <!-- Header -->
+<h1 class="remove-bottom" style="margin-top: 40px; color: #ad3f39; display: inline-block;">Making  with Arduino and Digispark</h1>&nbsp2017-2-21<h5><a href="../aboutme">about me</a>&nbsp&nbsp&nbsp&nbsp
+<a href="../cv">cv</a>&nbsp&nbsp&nbsp&nbsp
+<a href="../research">research</a>&nbsp&nbsp&nbsp&nbsp
+<a href="../blog">blog</a>&nbsp&nbsp&nbsp&nbsp
+</h5><hr /><div id="home">
+<p>
+I bought my Arduino about 6 years ago by being impressed how easally it is to make blinking lights and read value from potentiometer and that was all for very long time. I lost my curiosity of making anythinkg more complex due to the ugly arduino ide, frustrations of dubugging and lack of easy options for deploying what you make keeping opportunties to load new software and keeping things as simple as possible. Now Digisparck is available which uses single Atiny85 giving siz output pins and is programmable from usb also after you have deployed and soldered it into your applicaction and my curiosity had rised&#x2026;
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Arduino and Digisparck</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Arduino is now the easiest wya to start out with digital electornics with good ide, libraries and comunity. When it first came out about 6 or 7 years ago I remeber buying my first mega board for about 50 eiros (converting from 38 Ls) now it is available very cheaply on ebay (for example Arduino Uno board costs about 5 eiros). Arduino however is very often overkill for my small projects and I feel bad when I am not utilising thighs with their boundaries. Thus when I heard about Digisparck my curiosity returned.
+</p>
+
+<div class="figure">
+<p><img src="../contents/arduino.png" alt="arduino.png" width="800" />
+</p>
+</div>
+
+<p>
+Digisparck is basically an Attiny85 (about 1.15 eiros) with easy programmable interface over USB and voltage regulator on single chip. It has 6 output/input pins with whichs you can attach I2C devices (with SDA un SCK pins), analog input devices for controlling relays. The port mapping for digisparck is as foolows (again to forget)
+</p>
+<pre class="example">
+| Digital | Analog | Other |
+|---------+--------+-------|
+| P0      | -      | SDA   |
+| P1      | -      | -     |
+| P2      | A1     | SCK   |
+| P3      | A2     | -     |
+| P4      | A3     | -     |
+| P5      | A0     | Reset |
+</pre>
+<p>
+Also it can count time but with precission of 5 minutes in 24 hours with its 8-bit clock and you can make logic in its 8 kb internal memory with 512 bytes of RAM. It is so cheap (about 1.30 eiros) and convienietly small that I have no worries of making my deployable applicaction small and practical looking.
+</p>
+
+<p>
+But with such simplicity gain also comes sacrifices. Due to small memory and RAM some arduino libraries does not fit in theese requirements. Fortunatelly for many of them <a href="https://www.google.lv/search?client=ubuntu&amp;channel=fs&amp;q=%241.21++to+eiro&amp;ie=utf-8&amp;oe=utf-8&amp;gws_rd=cr&amp;ei=ElSsWPCJHOSS6QTB4Z2gCQ%0A">analog versions of libraries for attiny85</a> exists developed by makers of Digisparck allowing to use many arduino programms by making simple replacements in headers. The biggest limitation with digisparck is not being able to debugg your code easally as there is no serial monitor as arduino does. The situation might look even as desperate as the code
+</p>
+<pre class="example">
+void Blink(byte led, byte times){ // poor man's GUI
+  for (byte i=0; i&lt; times; i++){
+    digitalWrite(led,HIGH);
+    delay (400);
+    digitalWrite(led,LOW);
+    delay (175);
+  }
+}
+</pre>
+<p>
+Fortunnatelly solutions like emulating Serial port or arduino USB device are available which I will show here. Linitations like theese are the ones I like push creativly and you will find something in Debugging section.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Makefile</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1">Arduino</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+While usual arduino ide is good for seing out whats possible with arduino it is frustrating for not typing programms in your own way. Fortunatelly many had felt the same way thus <a href="https://github.com/sudar/Arduino-Makefile">makefile for arduino</a> is made by comuity. Very good introduction on how to use it can be found in a <a href="http://hackaday.com/2015/10/01/arduino-development-theres-a-makefile-for-that/">hackaday blog post</a>. Here I will outline how do I use it with system which had been configured with
+</p>
+<pre class="example">
+sudo apt-get install python-serial arduino-mk
+</pre>
+
+<p>
+Before I can compile code I need to set up project directory. In it I have Tools directory where I store some custom code uploaders and Arduino makefile thus making my projects less dependable on system which I am using and subproject directories. In thoose I have <code>libs</code> folder simple makefile and arduino sketch file <code>.ino</code>. An cleaned up tree from my projects directory basically looks as follows
+</p>
+<pre class="example">
+├── Tools
+│   ├── Arduino.mk
+│   ├── micronucleus-t85
+│   │   ├── commandline
+│   │   │   ├── Makefile
+│   │   │   ├── micronucleus
+│   │   │   ├── micronucleus.c
+├── Blink
+│   ├── ATtinyBlink.ino
+│   ├── build-attiny
+│   ├── build-mega
+│   ├── Makefile
+├── DebugShield
+│   ├── build-mega
+│   ├── DebugShield.ino
+│   ├── libs
+│   │   └── SoftwareSerial
+│   └── Makefile
+├── DebuggingCDC
+│   ├── build-attiny
+│   ├── libs
+│   │   └── DigisparkCDC
+│   ├── Makefile
+│   ├── Print.ino
+│   └── readme.org
+├── SmartRheostat
+│   ├── build-attiny
+│   ├── libs
+│   │   └── SendOnlySoftwareSerial
+│   │       ├── keywords.txt
+│   │       ├── SendOnlySoftwareSerial.cpp
+│   │       └── SendOnlySoftwareSerial.h
+│   ├── Makefile
+│   └── SmartRheostat.ino
+</pre>
+
+<p>
+The full power could be demonstrated of my <code>DebugShield</code> project which depends on <code>SoftwareSerial</code> library (where Arduino versions can be found in <code>/usr/share/arduino/libraries</code> with examples in <code>/usr/share/arduino/examples</code>) thus my makefile for this project is
+</p>
+<pre class="example">
+BOARD_TAG = mega
+
+USER_LIB_PATH+=./libs
+ARDUINO_LIBS += SoftwareSerial
+
+include ../Tools/Arduino.mk
+</pre>
+<p>
+which allows to compile and upload with single command <code>sudo make upload</code> and afterwards allows to see serial output in terminal with <code>make monitor</code> in screen environment (to exit it <code>Ctrl-a k</code>). 
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2">Digisparck</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+Microcontrollers (as attiny85) are usually programmed with ISP programmers which requires to take microcontroller out and put it on programmer. Thus limitting options to adjust your deployed applicaction. There are two simplicificactions which are possible in this working setup. First one is to programm attiny85 directly from USB and second adding USB port to your project.
+</p>
+
+<p>
+Attiny85 does not have USB interface to programm it thus a workaround is to initially burn startup program (bootloader) with ISP which would listen USB programmer and then every time you burn programm attiny85 over USB you automatically add bootloader for being able to programm on next time. Thus the basic formula for Digisparck is
+</p>
+<pre class="example">
+Digisparck = attiny85 + bootloader + USB port.
+</pre>
+
+<p>
+The bootloader which is burned with Digisparck is <a href="https://github.com/micronucleus/micronucleus">Micronucleus</a>. It takes about 1.5 kb of precios attiny85 memory and adds 5 second delay (adjustable) when attiny listens to USB micronucleus uploader until it enters in user application. Except for having to reattach digisparck to USB every time one wants to programm it user experince can be made the same as with arduino makefile. 
+</p>
+
+<p>
+When micronuclues burner is installed on the system a following Makefile should work
+</p>
+<pre class="example">
+BOARD_TAG    = attiny
+USER_LIB_PATH+=./libs
+ARDUINO_LIBS += SendOnlySoftwareSerial
+
+ALTERNATE_CORE_PATH = ../Tools/digispark
+ARDUINO_CORE_PATH = ../Tools/digispark/cores/tiny
+ARDUINO_DIR = ../Tools/digispark
+MCU = attiny85
+ISP_PROG = micronucleus
+#ISP_PROG = ../Tools/micronucleus-t85/commandline/micronucleus
+F_CPU = 16000000L
+</pre>
+<p>
+To use it do <code>sudo make upload</code> and attach your Digisparck device. But before uploading <b>check if applicaction does not exceeds 6 kb</b> otherwise micronucleus bootloader will be pushed out and thus no longer be able to programm the device over USB until it is burned back with ISP programmer.
+</p>
+
+<p>
+There are however rough edges with both makefiles for arduino and digisparck. For arduino makefile I have to install arduino while I need only very small part of that beast. For digisparck makefile I have to install micronucleus system wide which is not available from standart ubuntu repositories where I tried to use micronucleus from my Tools folder but it did not work. Theese are however very small issues compared to the problems it solves - being able to use your own edditor and consitent environment between arduino and digisparck development. Except for debugging.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Debugging</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+When I want to debug arduino code I add <code>Serial.println("My debug message")</code> statements everywhere in the code and listen them on my computer with <code>make monitor</code>. This functionality is suproted by microntroaller which arduino uses (the UART protocol) and on board adapter which translates Serial pins (TX and RX) to an USB device. Neither of theese are available on Digisparck thus it gets very interesting how can I debug my projects. 
+</p>
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">DigiUSB</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+While as I said one can use single led to see if one gets correct value from sensors it is also possible to put USB arduino emulator on attiny85 what <a href="https://github.com/digistump/DigistumpArduino/tree/master/digistump-avr/libraries/DigisparkCDC">DigiCDC</a> library does. The drawback for this approach is that it takes about 2.5 kb of precios attinys memory and I couldn't get it to work. But it is such a fantastic solution that I couldn't mention.
+</p>
+
+<p>
+For printing serial output with Digisparck it should be possible to use the library simply in a following manner
+</p>
+<pre class="example">
+#include &lt;DigiCDC.h&gt;
+void setup() {                
+  // initialize the digital pin as an output.
+  SerialUSB.begin(); 
+  /*
+  remember the SerialUSB starts as soon as you call begin 
+  and doesn't restart the board when you open the serial monitor 
+  (like the uno does) - so if you print to it and you don't 
+  have a serial monitor open that text is lost.
+  */
+}
+// the loop routine runs over and over again forever:
+void loop() {
+  
+   //SerialUSB.println(F("TEST!")); //wrap your strings in F() to save ram!
+   SerialUSB.println("TEST!"); //wrap your strings in F() to save ram!
+  
+  //   SerialUSB.delay(10);
+   /*
+   if you don't call a SerialUSB function (write, print, read, available, etc) 
+   every 10ms or less then you must throw in some SerialUSB.refresh(); 
+   for the USB to keep alive - also replace your delays - ie. delay(100); 
+   with SerialUSB.delays ie. SerialUSB.delay(100);
+   */
+}
+</pre>
+<p>
+When this program is burned into digisprack I computer recognizes it as arduino serial device and allowing me to use <code>make monitor</code>. However I couldn't see printed mesages in it. Appart from that it is such an extraordinary work by developers! 
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2">SendOnlySoftwareSerial</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+Much simpler solution is to use SoftwareSerial library from arduino where I did not need recieving function. Thus for getting out most juice of attiny85 I use <a href="http://gammon.com.au/Arduino/SendOnlySoftwareSerial.zip">SendOnlySoftwareSerial</a> library. It uses 1.5 kb for most simplest hellow world example but I have seen it to reduce to 0.5 kb when I had used TinyWire library. An example where I had used is for my rheostat project
+</p>
+<pre class="example">
+#include &lt;SendOnlySoftwareSerial.h&gt;
+
+SendOnlySoftwareSerial mySerial (3);  // Tx pin
+int sensorPin = 1; 
+int ledpin = 1;
+
+void setup() {
+  mySerial.begin(9600);
+  pinMode(ledpin, OUTPUT);
+}
+
+void loop() {
+  delay(1000);
+  
+  int reading = analogRead(sensorPin);
+  // converting that reading to voltage, for 3.3v arduino use 3.3
+  float voltage = reading * 5.0;
+  voltage /= 1024.0; 
+     
+  // now print out the temperature
+  float temperatureC = (voltage - 0.5) * 100 ;  //converting from 10 mv per degree wit 500 mV offset *
+  //to degrees ((voltage - 500mV) times 100) 
+  mySerial.println(temperatureC);
+
+  if (temperatureC&lt;65.) {
+    digitalWrite(ledpin, LOW);
+    return;
+  }
+
+  if (temperatureC&gt;70.) {
+    digitalWrite(ledpin, HIGH); 
+    return;
+  }
+    
+}
+</pre>
+<p>
+where I initialise digital pin 3 as an output for serial which is also acessable from digisparck USB port. Thus only device which would listen to serial output is needed. (Here one can also see most confusing asspect of Digisparck programming that analog input pins are enumerated diferently from digital ones.) 
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3">Debugger with Arduino</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+To get serial output understandable to my pc I use arduino for message redirection. Because its arduino I add also LCD display for seing the state and thus my serial to USB adapter is as follows
+</p>
+<pre class="example">
+#include &lt;LiquidCrystal.h&gt;
+#include &lt;SoftwareSerial.h&gt;
+
+SoftwareSerial mySerial(13, 12); // RX, TX
+LiquidCrystal lcd(7,6,5,4,3,2);
+
+String inputString = "";         // a string to hold incoming data
+boolean stringComplete = false;  // whether the string is complete201~
+
+void setup() {
+  inputString.reserve(200);
+  
+  // set up the LCD's number of columns and rows:
+  lcd.begin(8, 2);
+  // Print a message to the LCD.
+  lcd.print("hello, world!");
+
+  Serial.begin(9600);
+  while (!Serial) {
+    ; // wait for serial port to connect. Needed for native USB port only
+  }
+  Serial.println("Goodnight moon!");
+  // set the data rate for the SoftwareSerial port
+  mySerial.begin(9600);
+  mySerial.println("Hello, world?");
+}
+
+void loop() {
+
+  if (stringComplete) {
+    lcd.setCursor(0,0);
+    lcd.print(inputString.substring(0,8));
+
+    if (inputString.length()-2 &gt; 8) {
+      lcd.setCursor(0, 1);
+      lcd.print(inputString.substring(8,inputString.length()-2));
+    }
+    inputString = "";
+    stringComplete = false;
+  }
+  
+  if (mySerial.available()) {
+    char inChar = (char)mySerial.read();
+    Serial.write(inChar);
+    inputString += inChar;
+    if (inChar=='\n') {
+      stringComplete = true;
+    }
+  }
+  if (Serial.available()) {
+    mySerial.write(Serial.read());
+  }
+}
+</pre>
+<p>
+This code allows me to use arduino pin 13 for recieving messages from my Digisparck. How it works can seen in picture bellow
+</p>
+
+<div class="figure">
+<p><img src="../contents/arduino-debugger.jpg" alt="arduino-debugger.jpg" style="float:right;" width="350" />
+</p>
+</div>
+
+<p>
+In the picture is my digisparck project where debugger can be seen in use showing sensor value (temperature). Particularly in this project I read temperature from my firewood boiler which starts or stops water pump to extend burning time, burn in optimal temperature and reduce electricity costs. 
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Developing and Deploying</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Once my digisparck project is ready I have to think about power supply. As voltage regulator is on top of digisparck you can attach it to 9V battery which should work fine for some days depending on how you are saving power. For always on projects I use old phone chargers which convert power very efficiently even when power output is small as 0.1 W. The common thought that modern electronic chargers (like phone, laptop, etc&#x2026;) should be detached from electricity for being greener is not based on research. The energy waste is very insignificant compared to waste you probably get from to electricity attached microwaves, oven or blender due to very cheap powering like <a href="http://electronics.stackexchange.com/questions/41938/230v-ac-to-5v-dc-converter-lossless">Non-isolating Zener supply</a> (good discussion can be found in <a href="https://www.reddit.com/r/explainlikeimfive/comments/45om7h/eli5_ive_heard_that_leaving_wallphone_chargers/">reedit</a>). But for projcects where I am using relays (as above) I am using HLK-PM01 which on ebay available for 2.5 eiro and is easy to solder in my projects.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">Conclussions</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+Arduino is very good but often overkill for my applications. Digisparck on the contrary fits in the right spot between features and limitations, price and size but sacrificing debugging with serial output and easy as arduino uploading (if would have liked to use GUI). Here I demontrated that theese d is very bearble when right tools are used - Makefile, SendOnlySoftwareSerial and Arduino for serial reading and showing it on LCD. Thus here I have demonstrated simple tools for developing and deploying simple usefull electronics applicactions.   
+</p>
+</div>
+</div>
+</div>
+          <div class="sixteen columns">
+            <hr />
+            <small>This website was made with <a href="http://www.getskeleton.com">Skeleton</a> with modificactions from <a href="http://www.juliadiff.org">JuliaDiff</a></small>. 
+          </div>
+	</div><!-- container -->
+
+<!-- End Document
+================================================== -->
+</body>
+</html>
