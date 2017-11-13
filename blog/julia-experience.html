@@ -1,0 +1,317 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>Blog</title>
+
+	<!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- CSS
+  ================================================== -->
+<link rel="stylesheet" href="../stylesheets/base.css">
+<link rel="stylesheet" href="../stylesheets/skeleton.css">
+<link rel="stylesheet" href="../stylesheets/layout.css">
+
+        <style type="text/css">
+          b {
+          font-weight: bold; 
+          }
+          body {
+          font-size:12pt;font-family:"PT Serif", serif;
+          text-rendering: optimizeLegibility;
+          hyphens:auto
+          }
+          pre {
+          border: 1px solid #ccc;
+          box-shadow: 3px 3px 3px #eee;
+          padding: 8pt;
+          font-family: monospace;
+          font-size:10pt;
+          overflow: auto;
+          margin: 1.2em;
+          }
+          pre.src {
+          position: relative;
+          overflow: visible;
+          padding-top: 1.2em;
+          }
+        </style>
+	<!-- Favicons
+	================================================== -->
+    <!-- <link rel="shortcut icon" href="images/favicon.ico"> -->
+<script type="text/x-mathjax-config"> 
+    MathJax.Hub.Config({"HTML-CSS": { scale: 75}});
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+	<div class="container">
+	  
+          <!-- Header -->
+<h1 class="remove-bottom" style="margin-top: 40px; color: #ad3f39; display: inline-block;">Julia experience</h1>&nbsp2017-11-13<h5><a href="../aboutme">about me</a>&nbsp&nbsp&nbsp&nbsp
+<a href="../cv">cv</a>&nbsp&nbsp&nbsp&nbsp
+<a href="../research">research</a>&nbsp&nbsp&nbsp&nbsp
+<a href="../blog">blog</a>&nbsp&nbsp&nbsp&nbsp
+</h5><hr /><div id="home">
+<p>
+Most programmers are familiar with productivity gains to have an interpreter, meaningful error messages, docstrings, an easy procedure to make and install libraries. That is why python was such a good thing in it's time and I was strong advocator for its use in science. But then in 2015 I made a switch to Julia (then it was version 0.3) and I have never looked back. So I decided to make a blog post about Julia essentials to give the real experience what I value most about it: dynamic multiple dispatch, its type system, performance and ease of use in multicore environments.
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Multiple dispatch</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Every useful computer program applies some operations to input and generates output which can be represented in a list of machine instructions. Fortunately we can make these programs with abstracting data structures in types and operations which acts on them. Depending on way we organize types and operations we can write code in object oriented paradigm (OOP) or functional/imperative paradigm (FP) as `myfoo.hello()` and `hello(myfoo)` is the same thing. But nevertheless of paradigm chosen we turn out to spend more time on organizing rather than in benefits of creative process.
+</p>
+
+<p>
+To see that, imagine that we have a set of types and a set of operations that act on these types. Sometimes we need to add more operations and make sure they work properly on all types; sometimes we need to add more types and make sure all operations work properly on them. Sometimes, however, we need to add both - and there lies the problem. Most of the mainstream programming languages don't provide good tools to add both new types and new operations to an existing system without having to change existing code. That is called the "expression problem" (adapted from [&#x2026;] and [&#x2026;]).
+</p>
+
+<p>
+Both - FP and OOP - suffers from the expression problem. In OOP types can be easily added by class inheritance, but to add new operations (methods) to existing types you need to edit the class where it is defined and decide under which class the method fits taking a lot of mental effort [&#x2026;]; in FP operations are easy to add but you would be forced to name them like `plusmytypeAmytypeB(x,y)` to keep track of what they do. It is hard, however, to reuse existing operations for your new defined types. 
+</p>
+
+<p>
+For example consider what would it take to make function written for integer and floating point types `myfuncInt64Float64(x,y)` available for your own types BigInt and BigFloat. Firstly you would copy and paste functions code; change its name call and return types; for every function call on integer and floating types you would need to replace appropriate function call corresponding to the new types BigInt and BigFloat. In situations like these preprocessor might be useful to automate this process, but that would take a lot of effort to think how the code can be generalized. It would be much easier if types would not need to be specified including function names and compiler (or interpreter) would choose right function depending on passed types at runtime. On way to accomplish that is by writing function selection mechanism or "generic functions" yourself, but it would be much nicer if the "generic functions" would be generated automatically from the functions you had already in namespace - this is where dynamic multiple dispatch comes in handy.
+</p>
+
+<p>
+Dynamic multiple dispatch is a function selection mechanism which chooses right function implementation (function with specified types) depending on their passed types on runtime (the selection mechanism usually is not present at program running time because compiler can reason right type at compilation time). While it essentially is similar to C++ overloading, it does not suffer from pitfalls which comes from static rather dynamic dispatch (I will discuss that on next subsection). So dynamic multiple dispatch makes it possible to reuses a lot of code when you would like to add new operations for existing types as all functions would share the same names.
+</p>
+
+<p>
+But that is not enough! Adding new types is still hard because usually we want to base our type on existing type which already have set of operations which works on it and add only relevant data structure or operational differences. So that justifies need for type inheritance and multiple dispatch over abstract types which is final ingredient to solve the expression problem. Interestingly the solution is based on extensive use of polymorphism as functions for different types share the same names and inheritance. So is Julia OOP or FP language? 
+</p>
+</div>
+
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">Static dispatch</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+C++ overloading is an example of static multiple dispatch, because the right types needs to be guessed at the compilation time. But as I told previously that introduces pitfalls. I will try to illustrate them on a simple Julia program as my C++ is quite rusty:
+</p>
+<pre class="example">
+abstract Bar
+type SubBar1 &lt;: Bar end
+type SubBar2 &lt;: Bar end
+
+fubar(b::Bar) = "b is a Bar"
+fubar(b::SubBar1) = "b is a SubBar1"
+fubar(b::SubBar2) = "b is a SubBar2"
+
+function foo(x::Bar)
+fubar(x)
+end
+</pre>
+
+<p>
+If julia would do static dispatch like C++ the result of calling function `foo(x)` for both `x` types `SubBar1` and `SubBar2` would be "b is a Bar". So that does not help with expression problem much as we would need to define function `foo(x)` for each new type.
+</p>
+
+<p>
+In dynamic dispatch appropriate methods for `x` are chosen returning either "b is a SubBar1" or "b is a SubBar2". And that is very useful for creating your own types on top of existing ones and change only meaningful parts of code without actually modifying it. That makes the code extremely reusable in Julia and in my opinion is the strongest reason why C++ people could say that "Julia is C++ done right".
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2">Single dynamic dispatch</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+The behavior of single dynamic dispatch can actually be simulated in an object oriented programming language like python by making the transformation:
+</p>
+<pre class="example">
+hello(myfoo) -&gt; myfoo.hello()
+</pre>
+<p>
+So what difference would that make? The previous example can be implemented very easily as follows:
+</p>
+<pre class="example">
+class Bar:
+    pass
+class SubBar1(Bar):
+    pass
+class SubBar2(Bar):
+    pass
+
+Bar.fubar = lambda self: println("Bar")
+SubBar1.fubar = lambda self: println("SubBar1")
+SubBar2.fubar = lambda self: println("SubBar2")
+
+def foo(x):
+    x.fubar()
+</pre>
+<p>
+so calling `foo(x)` with object of `SubBar1` or `SubBar2` would result the same behavior as in dynamic dispatch. 
+</p>
+
+<p>
+The difficulty lies in the problem that it is only a single dispatch. For example consider classes which implement different kind of matrices - ordinary, sparse, triangular - and you would like to implement multiplication between them. A code in python would look as follows:
+</p>
+<pre class="example">
+class Matrix:
+    pass
+class Sparse:
+    pass
+class Triangular:
+    pass
+
+def mul_Matrix_Sparse(x,y):
+    pass
+def mul_Sparse_Matrix(x,y):
+    pass
+def mul_Matrix_Triangular(x,y):
+    pass
+def mul_Triangular_Matrix(x,y):
+    pass
+def mul_Sparse_Triangular(x,y):
+    pass
+def mul_Triangular_Sparse(x,y):
+    pass
+
+### Ups! Forgot to implement multiplicaction by objects themselves
+
+def __mul__Matrix(x,y):
+    if isinstace(y,Sparse):
+        return mul_Matrix_Sparse(x,y)
+    elseif isinstace(y,Triangular):
+        return mul_Matrix_Triangular(x,y)
+    else
+        assert("Not implemented")
+Matrix.__mul__ = __mul__Matrix
+
+def __mul__Sparse(x,y):
+    if isinstance(y,Matrix):
+        return mul_Sparse_Matrix(x,y)
+    elseif isinstance(y,Triangular):
+        return mul_Sparse_Triangular(x,y)
+    else:
+        assert("Not implemented")
+Sparse.__mul__ = __mul__Sparse
+
+def __mul__Triangular(x,y):
+    is isinstance(y,Matrix):
+        return mul_Triangular_Matrix(x,y)
+    elseif isinstance(y,Sparse):
+        return mul_Triangular_Sparse(x,y)
+    else:
+        assert("Not implemented")
+Triangular.__mul__ = __mul__Triangular
+</pre>
+
+<p>
+The ugly part of the code above is selection mechanism which is like a stone on your shoulders. For example, consider if would like to implement a vector type and multiplications with all present objects. Firstly you would have to write corresponding functions which is a necessary work. Then for each object selection mechanism you would have to add `isinstance(y,Vector)` which requires to edit existing code. Also adding operations which would allow to multiply the same objects would require the same amount of work and thus we turn to expression problem.
+</p>
+
+<p>
+On the contrary in the Julia code above would look as follows
+</p>
+<pre class="example">
+abstract Matrix
+abstract Sparse
+abstract Triangular
+
+*(x::Matrix,y::Sparse) = ...
+*(x::Matrix,y::Triangular) = ...
+*(x::Sparse,y::Triangular) = ...
+*(x::Sparse,y::Matrix) = ...
+*(x::Triangular,y::Matrix) = ...
+*(x::Triangular,y::Sparse) = ...
+</pre>
+<p>
+Not only the code is much shorter and easier to write, but also much easier to manage as we don't need to write dispatching mechanism ourselves. That is especially advantageous as to add new types and operations we need to edit the code above. Therefore we have seen that dynamic dispatch over multiple arguments is very important for solving the expression problem.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Resources</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+I was a bit too lazy to order my research of understanding myself why I feel so uncomfortable to do stuff again in python. Expression problem
+</p>
+
+<p>
+<a href="http://matthewrocklin.com/blog/work/2014/02/25/Multiple-Dispatch">http://matthewrocklin.com/blog/work/2014/02/25/Multiple-Dispatch</a>
+</p>
+
+<p>
+<a href="https://medium.com/@Jernfrost/defining-custom-units-in-julia-and-python-513c34a4c971">https://medium.com/@Jernfrost/defining-custom-units-in-julia-and-python-513c34a4c971</a>
+</p>
+
+<p>
+<a href="https://discourse.julialang.org/t/dynamic-dispatch/6963">https://discourse.julialang.org/t/dynamic-dispatch/6963</a>
+</p>
+
+<p>
+<a href="https://news.ycombinator.com/item?id=15565933">https://news.ycombinator.com/item?id=15565933</a>
+</p>
+
+<p>
+<a href="https://medium.com/@franksands/why-is-object-oriented-programming-useful-with-an-rpg-example-javascript-and-java-670e2d1c5505">https://medium.com/@franksands/why-is-object-oriented-programming-useful-with-an-rpg-example-javascript-and-java-670e2d1c5505</a>
+</p>
+
+<p>
+<a href="http://www.stochasticlifestyle.com/type-dispatch-design-post-object-oriented-programming-julia/">http://www.stochasticlifestyle.com/type-dispatch-design-post-object-oriented-programming-julia/</a>
+</p>
+
+<p>
+<a href="https://medium.com/@cscalfani/goodbye-object-oriented-programming-a59cda4c0e53">https://medium.com/@cscalfani/goodbye-object-oriented-programming-a59cda4c0e53</a>
+</p>
+
+<p>
+<a href="http://www.stochasticlifestyle.com/like-julia-scales-productive-insights-julia-developer/">http://www.stochasticlifestyle.com/like-julia-scales-productive-insights-julia-developer/</a>
+</p>
+
+<p>
+<a href="http://www.stochasticlifestyle.com/comparison-differential-equation-solver-suites-matlab-r-julia-python-c-fortran/">http://www.stochasticlifestyle.com/comparison-differential-equation-solver-suites-matlab-r-julia-python-c-fortran/</a>
+</p>
+
+<p>
+<a href="https://devblogs.nvidia.com/parallelforall/gpu-computing-julia-programming-language/">https://devblogs.nvidia.com/parallelforall/gpu-computing-julia-programming-language/</a>
+</p>
+
+<p>
+<a href="http://nbviewer.jupyter.org/gist/StefanKarpinski/b8fe9dbb36c1427b9f22">http://nbviewer.jupyter.org/gist/StefanKarpinski/b8fe9dbb36c1427b9f22</a>
+</p>
+
+<p>
+<a href="https://discourse.julialang.org/t/julia-motivation-why-werent-numpy-scipy-numba-good-enough/2236/10">https://discourse.julialang.org/t/julia-motivation-why-werent-numpy-scipy-numba-good-enough/2236/10</a>
+</p>
+
+<p>
+<a href="https://en.wikipedia.org/wiki/Expression_problem">https://en.wikipedia.org/wiki/Expression_problem</a>
+</p>
+
+<p>
+<a href="https://eli.thegreenplace.net/2016/the-expression-problem-and-its-solutions/">https://eli.thegreenplace.net/2016/the-expression-problem-and-its-solutions/</a>
+</p>
+
+<p>
+<a href="https://eli.thegreenplace.net/2016/a-polyglots-guide-to-multiple-dispatch-part-2">https://eli.thegreenplace.net/2016/a-polyglots-guide-to-multiple-dispatch-part-2</a>
+</p>
+
+<p>
+<a href="https://blog.logentries.com/2016/12/solving-the-expression-problem/">https://blog.logentries.com/2016/12/solving-the-expression-problem/</a>
+</p>
+</div>
+</div>
+</div>
+          <div class="sixteen columns">
+            <hr />
+            <small>This website was made with <a href="http://www.getskeleton.com">Skeleton</a> with modificactions from <a href="http://www.juliadiff.org">JuliaDiff</a></small>. 
+          </div>
+	</div><!-- container -->
+
+<!-- End Document
+================================================== -->
+</body>
+</html>

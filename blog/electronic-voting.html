@@ -59,66 +59,9 @@
 <a href="../research">research</a>&nbsp&nbsp&nbsp&nbsp
 <a href="../blog">blog</a>&nbsp&nbsp&nbsp&nbsp
 </h5><hr /><div id="home">
-
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">Voting</h2>
-<div class="outline-text-2" id="text-1">
 <p>
-Godīgas vēlēšanas ir viens no demokrātijas stūrakmeņiem - tās padara mūs vienlīdzīgus, ļauļ izteikt viedokli, un to rezultāts ļauļ tiekties pēc visas sabiedrības labākas nākotnes. Kā panākt ka vēlēšanas ir godīgas un tai pašā laikā tās par godīgām uzskata jebkurš sabiedrības loceklis? Šī problēma mūšdienās ir atrisināta izmantojot papīra vēlēšanas, ko izmantošu kā pamatu, lai ekstrapolētu uz interneta vēlēšanām.
+Universal ring signatures. 
 </p>
-
-<p>
-Viens no priekšnosacījumiem ir nepieciešamība, ka vēlēšanās var piedalīties tā sabiedrības daļa, kura ietverta valsts likumos, piemēram, vecuma grupa, pilsonības esamība. Tāpat nepieciešams, ka katram potenciālajam vēlētājam ir iespējas nobalsot, netraucētā vidē, neesot ietekmētam ar tiešām sekām no savas izvēles un negūstot no konkrētas izvēles ātri pieejamu labumu.
-</p>
-
-<p>
-No otras puses balsis ir godīgi jāsaskaita. Sabiedrības iesaiste ir atslēga. Katru reizi, kad mēs ejam vēlēšanu iecirknī un piedalamies balsu skaitīšanā, esam liecinieki par godīgu vēlēšanu esamību. Tas rosina uzticību valsts iekārtai un demokrātiskām vēlēšanām un ir sarežģīti sabotēt mūsu draugiem no Krievijas, jo tam būtu nepieciešams apstrādāt katru vēlēšanu iecirkni. Turpretim interneta vēlēšanās pietiek ar centrālā servera hakošanu, atrodot tajā caurumus. Tāpat nav pārliecības par pašu sistēmas programmētāju godīgumu, ko īsti pēc vēlēšanām vairs nevar pārbaudīt. Tā īpatnība ir, ka dators neatstāj pēdas. Tomēr ir kriptogrāfiski triki, kuri spēj nepilnības novērst.
-</p>
-
-<p>
-Varam paskatīties uz Igauniju. Vispirms starp vēlētāju un centrālo serveri tiek nodrošināts drošs savienojums. Tad vēlētājs iezvēlās biļeteni un to nošifrē ar sev zināmo atslēgu, kura glabājās uz ID kartes. Publiskā atslēga glabājās uz servera, kas pārbauda vēlētāja identitāti un pieņem biļeteni. Un visbeidzot vēlētājs var pārbaudīt, ka viņa biļetene ir nokļuvusi līdz vēlēšanu serverim. Pēc tam vēlēšanu skaitītšanas procesā biļetenes tiek atšifrētas ar zināmajām publiskajām atslēgām un saskaitītas. Šāda vēlēšanu sistēma ir ļoti droša un uzticama, kamēr tās izstrādātāji ir rīkojušies godprātīgi.
-</p>
-
-<p>
-Citāda pieeja, kura uzskata par daudzsološu, ir izmantot blockchain. Tās esence ir publiksi pieejama datubāze, kurai var pievienot ierakstus pēc iepriekš definētiem likumiem blockchain tīklā, kas pastāv dēļ pašiem tīkla lietotājiem. Kā to pielietot un kā tas varētu uzlabot vēlēšanas internetā man būtībā nav skaidrs.
-</p>
-
-<p>
-Es saprotu ka galvenais stūrakmenis blockcjhain ir kriptogrāfiskā atslēga, kuru zin tikai lietotājs. Kā gan to izsniegs vai anulēs attiecīgās iestādes, pārbaudīs to godprātīgu izmantošanu (tas, ka to izmanto attiecīgā persona) un šai sakarā kā piešķirs tam pilnvaras? Cits jautājums ir vai šī viena atslēga būs derīga mūžīgi visām vēlēšanām un vai tas tādā gadījumā neļaus iepriekš aptuveni zināt par ko katrs vēlētājs balsos, tādēļ tos dažādi diskrimonējot, kam piemēram būs pilnvaras atslēgu anulēt.
-</p>
-
-<p>
-Vēl man jautājums par pašas sistēmas uzticamību. Kā vēlētājs zinātu, ka viņa balss ir nodota un pieskaitīta? Kā lietotājs zin ar kādu algoritmu esošais tīkls veic izpildi? Kā notiek programmatūras atjaunošana, lai varētu adaptēties jaunām lietotāja vajadzībām? Un cik drošs šāds tīkls ir vēlēšanām mazai valstij zinot, ka lielvalstij ir lielāki datorresursi? Daļa no jautājumiem varbūt ir atbildama paskatoties uz bitcoin panākumiem, bet kopumā man ir vairāk jautājumu nekā atbildes attiecībā uz ieguvumiem salīdzinot ar vēlēšanu sistēmas dizainu kuru piedāvāšu.
-</p>
-</div>
-</div>
-
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">Visas kartes vienā</h2>
-<div class="outline-text-2" id="text-2">
-<p>
-Mēs dzīvojam karšu laikmetā. Kartes mums ir bankas kontiem, ID karte, etalons, autovadītāja apliecības un veikala karetes - Depo, Rimi, utt. Tās ir tik daudz, ka daļu no kartēm sāku glabāt pat somā! Pirms sāku izklāstīt kā to varētu novērst ir jāsaparot kādēļ šada situācija izveidojsies un kādas ir šīs metodes priekšrocības.
-</p>
-
-<p>
-Kartes izsniegšana visnotaļ ir vienkārša. Pakalpojuma sniedzējs uztaisa attēlu, pārbauda mūsu identitāti un tā ir gatava. To ieliekam makā un pēc savas vēlmes varam to rādīt vai nerādīt un trešā persona par mūsu kluba X apmeklēšanu nevar uzzināt parādot citu karti vai identitāti. Tas ir personas datu aizsardzības garā: jebkāda privāta rakstura informācija, kas ļauļ šo indivīdu identificēt.
-</p>
-
-
-
-<p>
-Bet kāds šīm kartēm tad ir galvenais nodoms un kādēļ tās mēs izmantojam?
-</p>
-
-
-
-
-
-<p>
-Lai cīnītos ar negodprātīgiem izstrādātājiem var izmantot blockchain. Lai gan esmu diletenats šai jomā, mēģināšu pastāstīt. 
-</p>
-</div>
-</div>
 </div>
           <div class="sixteen columns">
             <hr />
