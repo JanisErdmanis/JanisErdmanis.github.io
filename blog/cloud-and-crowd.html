@@ -244,7 +244,7 @@ where union-fuse must be installed with "sudo apt-get install union-fuse". This 
 </p>
 
 <p>
-To use rclone on pi I download binary at <sup><a id="fnr.3" name="fnr.3" class="footref" href="#fn.3">3</a></sup> for arm devices and put it in ~/bin on pi:
+To use rclone on pi I download binary at <sup><a id="fnr.3" name="fnr.3" class="footref" href="#fn.3">3</a></sup> for arm devices and put it in <code>/bin</code> on pi:
 </p>
 <pre class="example">
 rsync rclone pi@[ip of pi]:~/bin/
@@ -284,11 +284,11 @@ rclone sync $Remote: $BaseDir.ro
 exit 0
 </pre>
 <p>
-which I place under ~/bin/rclone-bisync with usual chmod +x.
+which I place under <code>\~/bin/rclone-bisync</code> with usual <code>chmod +x</code>.
 </p>
 
 <p>
-The last step is to make to execute this script regullarly which I do with crontab. That works as follows. I ssh into the raspberry and execute "crontab -e" which lets me to edit users crontab file. In that I put a following line
+The last step is to make to execute this script regullarly which I do with crontab. That works as follows. I ssh into the raspberry and execute <code>crontab -e</code> which lets me to edit users crontab file. In that I put a following line
 </p>
 <pre class="example">
 * * * * * sudo -u pi -i flock -n Dropbox.lock rclone-bisync Dropbox
@@ -301,29 +301,38 @@ r option is to edit system's crontab with "sudo crontab -e" which would not need
 </div>
 
 <div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4">Improvements</h2>
+<h2 id="sec-4">A note</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Very recently I decided to upgrade to Resilio Sync 2.6 as I wanted to use it with Android phone to synhronize my music collection. In the process of upgrading, I found that it is not desirable to use default way for Linux of setting up Resillio where it is being run from its own user and group as that produces files which Resillio would not have a synchronization rights. The solution to that problem is to use systemd (which ubuntu finally supports) to run the daemon from it's own user as described <a href="https://medium.com/@justlaputa/run-resiliosync-btsync-as-normal-user-under-ubuntu-1498f7701a28">here</a>. Otherwise this settup is still functioning for me (February of 2018).
+</p>
+</div>
 </div>
 
 <div id="outline-container-sec-5" class="outline-2">
 <h2 id="sec-5">References</h2>
 <div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li><a href="https://launchpad.net/~tuxpoldo/+archive/ubuntu/btsync">https://launchpad.net/~tuxpoldo/+archive/ubuntu/btsync</a>
+</li>
+<li><a href="https://web.archive.org/web/20150916171623/http://help.getsync.com/customer/portal/articles/1901257">https://web.archive.org/web/20150916171623/http://help.getsync.com/customer/portal/articles/1901257</a>
+</li>
+<li><a href="https://rclone.org/downloads/">https://rclone.org/downloads/</a>
+</li>
+<li><a href="https://medium.com/@justlaputa/run-resiliosync-btsync-as-normal-user-under-ubuntu-1498f7701a28">https://medium.com/@justlaputa/run-resiliosync-btsync-as-normal-user-under-ubuntu-1498f7701a28</a>
+</li>
+</ul>
 </div>
 </div>
 <div id="footnotes">
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
 
-<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p class="footpara">
-: <a href="https://launchpad.net/~tuxpoldo/+archive/ubuntu/btsync">https://launchpad.net/~tuxpoldo/+archive/ubuntu/btsync</a>
-</p></div>
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p>DEFINITION NOT FOUND.</p></div>
 
-<div class="footdef"><sup><a id="fn.2" name="fn.2" class="footnum" href="#fnr.2">2</a></sup> <p class="footpara">
-: <a href="https://web.archive.org/web/20150916171623/http://help.getsync.com/customer/portal/articles/1901257">https://web.archive.org/web/20150916171623/http://help.getsync.com/customer/portal/articles/1901257</a>
-</p></div>
+<div class="footdef"><sup><a id="fn.2" name="fn.2" class="footnum" href="#fnr.2">2</a></sup> <p>DEFINITION NOT FOUND.</p></div>
 
-<div class="footdef"><sup><a id="fn.3" name="fn.3" class="footnum" href="#fnr.3">3</a></sup> <p class="footpara">
-: <a href="https://rclone.org/downloads/">https://rclone.org/downloads/</a>
-</p></div>
+<div class="footdef"><sup><a id="fn.3" name="fn.3" class="footnum" href="#fnr.3">3</a></sup> <p>DEFINITION NOT FOUND.</p></div>
 
 
 </div>
