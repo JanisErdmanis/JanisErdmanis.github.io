@@ -289,39 +289,6 @@ th {
 h1:hover > .heading-anchor1, h2:hover > .heading-anchor2, h3:hover > .heading-anchor3, h4:hover > .heading-anchor4, h5:hover > .heading-anchor5, h6:hover > .heading-anchor6 { color: var(--secondary-color); }
 
 
-@media (prefers-color-scheme: light) {
-  body {
-    background-color: #171d30;
-    color: #fffff8;
-  }
-
-  a {
-    color: #fffff8;
-  }
-
-  nav a, .logo a, .post-title a, .social a, .rightcolumn a, dt a {
-    color: #fffff8;
-  }
-
-  .generated-by {
-    color: #fffff8;
-  }
-
-  th {
-    color: #fffff8;
-    border-bottom: 0.1rem solid #fffff8;
-  }
-
-  .codeblock {
-    background-color: #1f2538;
-  }
-
-  .post-meta {
-    color: #fffff8;
-  }
-
-}
-
 html {
   font-family: /*'EBGaramond',*/ "Iowan Old Style", "Apple Garamond", "Baskerville", "Droid Serif", serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
