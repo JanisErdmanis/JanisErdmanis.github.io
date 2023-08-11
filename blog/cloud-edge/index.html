@@ -1,0 +1,114 @@
+<!doctype html> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/libs/highlight/styles/github.min.css"> <link rel=stylesheet  href="/css/franklin.css"> <link rel=stylesheet  href="/css/basic.css"> <link rel=icon  href="/assets/favicon.png"> <title>From a cloud to a personalized edge </title> <header> <div class=blog-name ><a href="/">Janis Erdmanis</a></div> <nav> <ul> <li><a href="/cv/">CV</a> <li><a href="/blog/">Blog</a> <li><a href="/bookshelf/">BookShelf</a> </ul> </nav> </header> <div class=post-meta >Feb 25, 2017 | 1674 Words</div> <div class=franklin-content > <h1 id=from_a_cloud_to_a_personalized_edge ><a href="#from_a_cloud_to_a_personalized_edge" class=header-anchor >From a cloud to a personalized edge </a></h1> <p>I have been a Dropbox user for a long time and can recommend it for its stability and ease of use. But it comes with its tradeoffs - the space is limited until you subscribe to their service. That felt too expensive or me, and I started to look for alternatives this April, mainly what I could do with my raspberry pi and home ethernet connection.</p> <p>Hosting my own data storage service like SAMBA or OwnCloud is hard. First, I do not have a static IP address to which I could always connect, which can be subscribed for an additional fee from my ethernet provider. Also, my network connection is not fast enough to upload data &#40;about 200 kb/s&#41;, so large data storage and management seemed painful. Thus costs for subscribing to Dropbox are actually reasonable costs compared to your own effort to maintain a similar service.</p> <p>Hope came when I read about BitTorrent Sync technology. It allows for making synchronisation folders which can be shared between computers &#40;also phones&#41; without the use of cloud storage. That, in turn, offers limitless storage and speed for sharing data. That is such marvellous software to use&#33; Thus although property &#40;Syncthing is a promising open-source alternative&#41; I decided to dive into it.</p> <h2 id=setting_up_raspbian ><a href="#setting_up_raspbian" class=header-anchor >Setting up raspbian</a></h2> <p>Since data is not stored on the cloud, for synchronising, at least two computers must be on. That is usually inconvenient; thus, like others, I set my own always-on node on raspberry pi. Since every time when I set up new stuff on raspberry pi, I look for the same commands on the Internet, I decided to make a detailed description for that here. I start with raspberry pi and an SD card.</p> <p>On the computer, I download raspbian lite and make a burn to the SD card with a command</p> <pre><code class="bash hljs"><span class=hljs-built_in >dd</span> bs=4M <span class=hljs-keyword >if</span>=2017-07-05-raspbian-jessie.img of=/dev/sdX</code></pre>
+<p>where X can be found from changes in <code>ls /dev</code>. After that, I create <code>/boot/ssh</code> file to enable listening for ssh connections for this one session &#40;the ssh file is deleted on boot&#41;. Then I push my SD card into Pi and attach it to my computer with an ethernet cable with the method &quot;Shared to other computers&quot; under &quot;Network Connections&quot;. The IP address can be found with</p>
+<pre><code class="bash hljs">nmap -n -sP 10.42.0.255</code></pre>
+<p>where the last number is Broadcast Address, which can be found under connection information. Another way is to scan the whole local network with the following command:</p>
+<pre><code class="bash hljs">nmap -sP 192.168.1.1/24</code></pre>
+<p>Now I am able to connect to pi over ssh:</p>
+<pre><code class="bash hljs">ssh pi@10.42.0.240</code></pre>
+<p>where the number is the IP address of the previous step &#40;password is Raspberry&#41;. As a first step, I change the password with <code>passwd</code> command. Then I start <code>raspi-config</code> and do the following actions in the menu</p>
+<ul>
+<li><p>increase partition size to occupy all SD card</p>
+
+<li><p>Enable ssh on boot</p>
+
+</ul>
+<p>Now Raspberry is set up for configuration.</p>
+<h2 id=finding_ip_address_by_an_email_message ><a href="#finding_ip_address_by_an_email_message" class=header-anchor >Finding ip ADDRESS by an email message</a></h2>
+<p>My internet provider provides me with a public IP address allowing me to configure it outside my home network and other exciting things like personal VPN, Samba server, etc. However, it is not static; thus, I have to keep track of it somehow. I have chosen to use email to do that.</p>
+<p>As usual, I spent a long time looking for information for things not possible &#40;it was&#33;&#33;&#33;&#41; - sending an email directly from the IP address to Gmail. As a remedy, I have to use an authorised &#40;in some way to avoid spam&#41; email also to send messages which require me to store my email password on the device. That is done by SMTP, and the message script in Python looks as follows:</p>
+<pre><code class="julia hljs"><span class=hljs-comment >#!/usr/bin/python</span>
+<span class=hljs-keyword >import</span> subprocess
+<span class=hljs-keyword >import</span> smtplib
+<span class=hljs-keyword >import</span> socket
+from email.mime.text <span class=hljs-keyword >import</span> MIMEText
+<span class=hljs-keyword >import</span> datetime
+<span class=hljs-comment ># Change to your own account information</span>
+to = &#x27;akels14<span class=hljs-meta >@gmail</span>.com&#x27;
+gmail_user = &#x27;akels14<span class=hljs-meta >@gmail</span>.com&#x27;
+gmail_password = &#x27;*********&#x27;
+smtpserver = smtplib.SMTP(&#x27;smtp.gmail.com&#x27;, <span class=hljs-number >587</span>)
+smtpserver.ehlo()
+smtpserver.starttls()
+smtpserver.ehlo
+smtpserver.login(gmail_user, gmail_password)
+today = datetime.date.today()
+<span class=hljs-comment ># Very Linux Specific</span>
+arg=&#x27;ip route list&#x27;
+p=subprocess.Popen(arg,shell=True,<span class=hljs-literal >stdout</span>=subprocess.PIPE)
+data = p.communicate()
+split_data = data[<span class=hljs-number >0</span>].split()
+ipaddr = split_data[split_data.index(&#x27;src&#x27;)+<span class=hljs-number >1</span>]
+my_ip = &#x27;Your ip is %s&#x27; %  ipaddr
+msg = MIMEText(my_ip)
+msg[&#x27;Subject&#x27;] = &#x27;IP For RaspberryPi on %s&#x27; % today.strftime(&#x27;%b %d %Y&#x27;)
+msg[&#x27;From&#x27;] = gmail_user
+msg[&#x27;To&#x27;] = to
+smtpserver.sendmail(gmail_user, [to], msg.as_string())
+smtpserver.quit()</code></pre>
+<p>To run this script on boot, I put it in <code>/home/pi/bin</code> with <code>chmod &#43;x</code> and add the following lines to <code>/etc/rc.local</code></p>
+<pre><code class="bash hljs">IP=$(hostname -I) || <span class=hljs-literal >true</span>
+    <span class=hljs-keyword >if</span> [ <span class=hljs-string >&quot;<span class=hljs-variable >$_IP</span>&quot;</span> ]; <span class=hljs-keyword >then</span>
+      <span class=hljs-built_in >printf</span> <span class=hljs-string >&quot;My IP address is %s\n&quot;</span> <span class=hljs-string >&quot;<span class=hljs-variable >$_IP</span>&quot;</span>
+      <span class=hljs-built_in >sleep</span> 30
+      sudo -u pi -i mailip
+    <span class=hljs-keyword >fi</span></code></pre>
+<p>That will execute the script after all other Linux scripts are done. Sometimes I did not receive emails; thus, one needs to set up raspberry to wait for the network until the boot is finished, which is available under <code>raspi-config</code>. Another option is to execute the script when a network connection is established. That can be accomplished by putting the script in <code>/etc/network/if-up.d/mailip</code>. However, that did not work for me.</p>
+<h2 id=configuration_of_bittorrent_sync ><a href="#configuration_of_bittorrent_sync" class=header-anchor >Configuration of bittorrent sync</a></h2>
+<p>On the Internet, I have read opinions that BitTorrent sync 1.4 is the last stable version, which works best with old raspberry pi, which I did use. Also, the GUI client on Linux has not indicator applet on newer Linux versions, as development seems to be stalled. Fortunately, after looking for an hour, I found it on <a href="https://launchpad.net/~tuxpoldo/\&#43;archive/ubuntu/btsync">BitTorrent Sync PPA</a>.</p>
+<p>The arm archive downloaded in the link needs to be unarchived and placed and synced to the raspberry pi, which can be done with a command:</p>
+<pre><code class="bash hljs">rsync btsync pi@[ip pi]:~/bin/</code></pre>
+<p>It also needs to be started on boot which can be done by placing a line before <code>exit 0</code> in <code>/etc/rc.local</code>:</p>
+<pre><code class="bash hljs">sudo -u pi -i <span class=hljs-built_in >nohup</span> btsync --webui.listen 0.0.0.0:8888 &amp;</code></pre>
+<p>To log in to the btsync in the browser, the following address must be used:</p>
+<pre><code class="bash hljs">[ip of pi]:8888/gui/</code></pre>
+<p>In there, you can either create or attach yourself to the shares. And that&#39;s it. You may now restart the device, and it will still work as a cloud for you.</p>
+<h2 id=mirroring_with_cloud ><a href="#mirroring_with_cloud" class=header-anchor >Mirroring with cloud</a></h2>
+<p>After I had used this setup for over a month, I found it to be very robust and also faster in synchronising than Drobox. The problem at present is that almost no one uses it if you compare the userbase of Dropbox, Onedrive and Google Drive. That, in turn, adds complexity where my pc may fail and makes it feel crowded. I decided that a better option is to put the synchronisation of various cloud services on my Raspberry.</p>
+<p>As it turned out, that was not straightforward. For example, Dropbox client does not work on arm devices, and there are no plans to support them. A far-fetched option was to emulate it with a desktop, which worked in principle but was unbearably slow.</p>
+<p>Fortunately, there is a <code>rclone</code> cloud synchronisation command line application inspired by the <code>rsync</code>. Although it does its task great of making rsync-like data transfers, it was not immediately apparent how I could make synchronisation of this one. It took me days &#40;or weeks&#41; until I found a way with <code>union-fuse</code>.</p>
+<p>First, I create three folders, for example, dropbox:</p>
+<pre><code class="bash hljs"><span class=hljs-built_in >mkdir</span> -p ~/Cloud/Dropbox.diff
+<span class=hljs-built_in >mkdir</span> -p ~/Cloud/Dropbox.ro
+<span class=hljs-built_in >mkdir</span> -p ~/BtSync/Cloud/Dropbox</code></pre>
+<p>Then with <code>unionfs</code>, I bind them together into <code>/etc/rc.local</code> &#40;again before exit 0&#41;</p>
+<pre><code class="bash hljs">sudo -u pi -i <span class=hljs-built_in >nohup</span> unionfs-fuse -o cow Cloud/Dropbox.diff=RW:Cloud/Dropbox.ro=RO BtSync/Cloud/Dropbox &amp;</code></pre>
+<p>where union-fuse must be installed with <code>sudo apt-get install union-fuse</code>. This command now will merge not intended to be written folder <code>Dropbox.ro</code> with differences <code>Dropbox.diff</code> to form an ordinary Dropbox folder, which is synchronised over the network with <code>btsync</code>. What remains to be done is to push changes from <code>Dropbox.diff</code> to the cloud and synchronise <code>Dropbox.ro</code> with it. That is exactly what I am doing.</p>
+<p>To use <code>rclone</code> on pi I downloaded the <a href="https://rclone.org/downloads/">RClone binary</a> for arm devices and put it in <code>~/bin</code> on pi:</p>
+<pre><code class="bash hljs">rsync rclone pi@[ip of pi]:~/bin/</code></pre>
+<p>Then I ssh on the pi, run <code>rclone config</code> and follow instructions to add remote like Dropbox. To test my remote, I mirror the cloud locally with a command:</p>
+<pre><code class="bash hljs">rclone <span class=hljs-built_in >sync</span> Dropbox: ~/Cloud/Dropbox.ro</code></pre>
+<p>The last step is to put <code>rclone</code> and union-fuse together to form a synchronisation. The hardest part was to ensure that deletes remotely or locally took effect. Otherwise, the synchronisation script is simple:</p>
+<pre><code class="bash hljs"><span class=hljs-meta >#!/bin/bash</span>
+<span class=hljs-comment ># The script which applies the changes from unionfs and pulls new data from cloud</span>
+Remote=<span class=hljs-variable >$1</span> <span class=hljs-comment ># Dropbox</span>
+BaseDir=<span class=hljs-variable >$HOME</span>/Cloud/<span class=hljs-variable >$Remote</span>
+<span class=hljs-built_in >mkdir</span> -p <span class=hljs-variable >$BaseDir</span>.ro &amp;&amp; <span class=hljs-built_in >mkdir</span> -p <span class=hljs-variable >$BaseDir</span>.diff
+
+<span class=hljs-keyword >if</span> <span class=hljs-built_in >test</span> <span class=hljs-string >&quot;<span class=hljs-subst >$(ls -A $BaseDir.diff)</span>&quot;</span>; <span class=hljs-keyword >then</span> <span class=hljs-comment ># A better option would be to use find to eclude sync files </span>
+    <span class=hljs-built_in >mkdir</span> -p <span class=hljs-variable >$BaseDir</span>.diff/.unionfs &amp;&amp; <span class=hljs-built_in >cd</span> <span class=hljs-variable >$BaseDir</span>.diff/.unionfs || <span class=hljs-built_in >exit</span> 1
+    find . -name <span class=hljs-string >&quot;*_HIDDEN~&quot;</span> -<span class=hljs-built_in >type</span> f | <span class=hljs-keyword >while</span> <span class=hljs-built_in >read</span> file; <span class=hljs-keyword >do</span> <span class=hljs-built_in >rm</span> <span class=hljs-string >&quot;<span class=hljs-variable >$file</span>&quot;</span> &amp;&amp; <span class=hljs-built_in >rm</span> <span class=hljs-string >&quot;<span class=hljs-variable >$BaseDir</span>.ro/<span class=hljs-variable >${file:0:-8}</span>&quot;</span> &amp;&amp; rclone delete <span class=hljs-variable >$Remote</span>:<span class=hljs-string >&quot;<span class=hljs-variable >${file:0:-8}</span>&quot;</span>; <span class=hljs-keyword >done</span>
+    find . -name <span class=hljs-string >&quot;*_HIDDEN~&quot;</span> -<span class=hljs-built_in >type</span> d | <span class=hljs-keyword >while</span> <span class=hljs-built_in >read</span> <span class=hljs-built_in >dir</span>; <span class=hljs-keyword >do</span> <span class=hljs-built_in >rmdir</span> <span class=hljs-string >&quot;<span class=hljs-variable >$dir</span>&quot;</span> &amp;&amp; <span class=hljs-built_in >rmdir</span> <span class=hljs-string >&quot;<span class=hljs-variable >$BaseDir</span>.ro/<span class=hljs-variable >${dir:0:-8}</span>&quot;</span> &amp;&amp; rclone <span class=hljs-built_in >rmdir</span> <span class=hljs-variable >$Remote</span>:<span class=hljs-string >&quot;<span class=hljs-variable >${dir:0:-8}</span>&quot;</span>; <span class=hljs-keyword >done</span> 
+
+    <span class=hljs-built_in >cd</span> <span class=hljs-variable >$BaseDir</span>.diff || <span class=hljs-built_in >exit</span> 1
+
+    rsync -ua --exclude <span class=hljs-string >&quot;*.!sync&quot;</span> --exclude <span class=hljs-string >&quot;.unionfs&quot;</span> . <span class=hljs-string >&quot;<span class=hljs-variable >$BaseDir</span>.ro&quot;</span>
+    rclone move -u --delete-after --exclude <span class=hljs-string >&quot;*.!sync&quot;</span> --exclude <span class=hljs-string >&quot;.unionfs&quot;</span> . <span class=hljs-variable >$Remote</span>:
+
+    find . -<span class=hljs-built_in >type</span> d ! -name <span class=hljs-string >&quot;*_HIDDEN~&quot;</span> -empty -delete
+<span class=hljs-keyword >fi</span>    
+
+rclone <span class=hljs-built_in >sync</span> <span class=hljs-variable >$Remote</span>: <span class=hljs-variable >$BaseDir</span>.ro
+<span class=hljs-built_in >exit</span> 0</code></pre>
+<p>which I place under <code>~/bin/rclone-bisync</code> with usual <code>chmod &#43;x</code>.</p>
+<p>The last step is to execute this script regularly, which I do with crontab. That works as follows. I ssh into Raspberry and execute <code>crontab -e,</code> which lets me edit the user&#39;s crontab file. In that, I put the following line:</p>
+<pre><code class="plaintext hljs">* * * * * sudo -u pi -i flock -n Dropbox.lock rclone-bisync Dropbox</code></pre>
+<p>which ensures that synchronisation is being started every minute if it is not already running. But for this to be effective system must log in to the user; thus, I set up autologin with <code>raspi-config</code>. Another option is to edit the system&#39;s crontab with <code>sudo crontab -e,</code> which would not need autologin.</p>
+<div class=page-foot >
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> Janis Erdmanis. Last modified: August 11, 2023.
+    Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+</div>
+</div>
+    
+    
+        <script src="/libs/highlight/highlight.min.js"></script>
+<script>hljs.highlightAll();hljs.configure({tabReplace: '    '});</script>

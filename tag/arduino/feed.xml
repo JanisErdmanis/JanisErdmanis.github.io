@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:media="http://search.yahoo.com/mrss/"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:georss="http://www.georss.org/georss">
+
+  <channel>
+    <title>
+      <![CDATA[  Janis Erdmanis  ]]>
+    </title>
+    <link> https://janiserdmanis.org </link>
+    <description>
+      <![CDATA[  My portfolio website  ]]>
+    </description>
+    <atom:link
+      href="https://janiserdmanis.org/feed.xml"
+      rel="self"
+      type="application/rss+xml" />
+
+
+<item>
+  <title>
+    <![CDATA[  Building  with Arduino and Digisparck  ]]>
+  </title>
+  <link> https://janiserdmanis.org/blog/digispark/index.html </link>
+  <guid> https://janiserdmanis.org/blog/digispark/index.html </guid>
+  <description>
+    <![CDATA[  I lost my interest in making things with Arduino due to an ugly Arduino ide, debugging frustrations and lack of easy options for deploying what I make. The Digisparck saved the day, and I made a regulator for my home heat exchanger.  ]]>
+  </description>  
+    
+  <pubDate>Fri, 11 Aug 2023 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>Janis Erdmanis</atom:name>
+  </atom:author>
+        
+</item>
+</channel></rss>

@@ -1,0 +1,72 @@
+<!doctype html> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/libs/highlight/styles/github.min.css"> <link rel=stylesheet  href="/css/franklin.css"> <link rel=stylesheet  href="/css/basic.css"> <link rel=icon  href="/assets/favicon.png"> <title>How I used to make this page</title> <header> <div class=blog-name ><a href="/">Janis Erdmanis</a></div> <nav> <ul> <li><a href="/cv/">CV</a> <li><a href="/blog/">Blog</a> <li><a href="/bookshelf/">BookShelf</a> </ul> </nav> </header> <div class=post-meta >Feb 13, 2017 | 1143 Words</div> <div class=franklin-content > <h1 id=how_i_used_to_make_this_page ><a href="#how_i_used_to_make_this_page" class=header-anchor >How I used to make this page</a></h1> <p>This web page is hosted with Github Pages from my <a href="https://github.com/akels/akels.github.io">GitHub repository</a> for free. The tradeoff is that you can serve only static pages and content. This is where I and many others develop creative solutions since no one likes to write plain HTML. I use .org files for my journal and other note-taking things; thus, taking inspiration from others, I compile my <a href="https://github.com/akels/akels.github.io/tree/master/page-sources/org-page-sources">org sources</a> to static HTML with <a href="https://gist.github.com/JanisErdmanis/94da86eecfeeef7b9e38f2c0a7abf367">a single Elisp script</a>.</p> <h2 id=interface ><a href="#interface" class=header-anchor >Interface</a></h2> <p>Before diving into configuration details, I will show what I can do. I can write LATEX formulas in a <code>.org</code> file, add images with special HTML formatting, videos, code, links to the outside world and links to org, which are changed automatically to their counterparts on HTML export. You can see all these features with the following .org source text file.</p> <pre><code class="julia hljs"><span class=hljs-comment >#+TITLE: Tests</span>
+<span class=hljs-comment >#+DATE: 2017-2-16</span>
+* Header
+- list item <span class=hljs-number >1</span>
+- list item <span class=hljs-number >2</span>
+- *bold* /italic/ =verbatim= ~code~ +strike tghrough+ 
+** SubHeader
+$\LaTeX$ [[file:ideas.org][Ideas]] 
+\[ e^{i\<span class=hljs-literal >pi</span>} = -<span class=hljs-number >1</span> \]
+<span class=hljs-comment >#+ATTR_HTML: :style float:left; :height 200</span>
+[[file:../contents/profile.png]]
+<span class=hljs-comment >#+HTML: &lt;video height=&quot;200&quot; controls&gt;</span>
+<span class=hljs-comment >#+HTML: &lt;source src=&quot;../contents/optimal-pulse.mp4#t=2&quot; type=&quot;video/mp4&quot;&gt;</span>
+<span class=hljs-comment >#+HTML: &lt;/video&gt;</span></code></pre> <p>When I finish the <code>.org</code> file writing, I compile it with a single command in the <code>page-sources</code> directory <code>emacs --script publish.el --eval &quot;&#40;blog-publish&#41;&quot;~ or from my emacs ~M-x blog-publish</code> where for output see <a href="https://janiserdmanis.org/blog/tests">test page</a>. Then I test if a page looks fine locally and do the usual push to the GitHub repository from where Github Pages take sources for hosting. Features like your domain name are also possible, as I can see from my page. </p> <h2 id=behind_the_scenes ><a href="#behind_the_scenes" class=header-anchor >Behind the SCENES</a></h2> <p>Many tools are available for generating static web pages from simpler source files like markdown, reStructuredText, and org files. For example, you can use <code>pandoc</code> for almost any such conversation to HTML and, even more, Jekyl for generating static web pages from markdown files or <code>jinja2</code> for making html template and filling it with content &#40;<a href="http://flask.pocoo.org/snippets/19/">see as an example</a>&#41;. I picked up the <code>org-publish</code> feature from <code>org-mode</code> mainly because I use emacs daily for my note-taking but also because it is written in the mature programming language <code>elisp</code>.</p> <p>When I started considering emacs as a tool for my programming, I was exposed to <code>elisp,</code> which initially looked like one of the dirtiest languages I had worked with. But after learning some essential bits of it, I get to like it, and the ugliest part of it, sexps, becomes one of the most productive parts of it. For example, code in <code>elisp</code> will have much fewer local variables for the same task, and you save time thinking of the best programming paradigm for your problem. Elisp and many other languages like them are also becoming increasingly more popular with the functional programming paradigm shift, where one benefit I see is code becoming more modular. Thus it&#39;s valuable to understand why and when it is better. </p> <p><a href="https://gist.github.com/JanisErdmanis/94da86eecfeeef7b9e38f2c0a7abf367">As seen here</a>, all my configuration is written in emacs lisp, so prepare your eyes well while I break it into parts. As an example, we might consider the following project tree:</p> <pre><code class="julia hljs">.
+├── input
+│   └── example.org
+├── output
+│   └── example.html
+├── publish.el</code></pre> <p><code>input</code> is where all <code>.org</code> files are stored, <code>output</code> for converted <code>.html</code> files, and <code>publish.el</code> is the <code>elisp</code> compilation script. The following example of <code>publish.el</code> illustrate the basic building block for converting all <code>.org</code> files to <code>.html</code> counterparts:</p> <pre><code class="julia hljs">(require &#x27;ox)
+(setq make-backup-files nil) ;; No need <span class=hljs-keyword >for</span> backup files
+
+(defvar my-base-directory (concat (file-name-directory load-file-name) <span class=hljs-string >&quot;input&quot;</span>)
+  <span class=hljs-string >&quot;Org sources are taken from folder input relative to this file&quot;</span>)
+
+(defvar my-publishing-directory (concat (file-name-directory load-file-name) <span class=hljs-string >&quot;output&quot;</span>)
+  <span class=hljs-string >&quot;Converted org files are in folder output relative to this file&quot;</span>)
+
+;; Right place <span class=hljs-keyword >for</span> a personalized template
+
+(setq org-publish-project-alist
+      <span class=hljs-string >`(
+        (&quot;publish&quot;
+         :base-directory ,my-base-directory ;; Path to your org files.
+         :base-extension &quot;org&quot;
+         :publishing-directory ,my-publishing-directory 
+         ;;:publishing-function pd-html-publish-to-html 
+         :publishing-function org-html-publish-to-html
+         :html-extension &quot;html&quot;
+         )
+        )
+      )
+
+(defun blog-publish ()
+    (interactive)
+    (org-publish &quot;publish&quot; t)
+    )</span></code></pre> <p>The first line <code>&#40;require &#39;ox&#41;</code> loads the module from <code>org-mode,</code> which has the publishing feature <code>org-publish</code>. Configuration of the publishing project happens under the assignment of the global variable <code>org-publish-project-alist,</code> which is used when the publishing function is called inline <code>&#40;org-publish &quot;publish&quot; t&#41;</code>. When the code above is executed with the command <code>emacs --script publish.el --eval &quot;&#40;blog-publish&#41;&quot;~ it will produce ~.html</code> files in the <code>output</code> directory with a functional but not very nice-looking default template.</p> <p>Many configure default templates to suit their needs. I wanted to go the other way, producing templates from my chosen <a href="http://www.juliadiff.org/">perfect web page</a>. Fortunately, I found an answer on *emacs stack exchange on how to do it with <code>org-publish</code>. In <code>org-publish-project-alist,</code> I can bind my publishing function <code>pd-html-publish-to-html</code> which defines how content and metadata are written to an HTML file:</p> <pre><code class="julia hljs">(defun pd-html-template (contents info)
+  (concat
+   <span class=hljs-string >&quot;&lt;!DOCTYPE html&gt;\n&quot;</span>
+   (format <span class=hljs-string >&quot;&lt;html lang=\&quot;%s\&quot;&gt;\n&quot;</span> (plist-get info :language))
+   <span class=hljs-string >&quot;&lt;head&gt;\n&quot;</span>
+   (format <span class=hljs-string >&quot;&lt;meta charset=\&quot;%s\&quot;&gt;\n&quot;</span>
+           (coding-system-get org-html-coding-system &#x27;mime-charset))
+   (format <span class=hljs-string >&quot;&lt;title&gt;%s&lt;/title&gt;\n&quot;</span>
+           (org-<span class=hljs-keyword >export</span>-data (or (plist-get info :title) <span class=hljs-string >&quot;&quot;</span>) info))
+   (format <span class=hljs-string >&quot;&lt;meta name=\&quot;author\&quot; content=\&quot;%s\&quot;&gt;\n&quot;</span>
+           (org-<span class=hljs-keyword >export</span>-data (plist-get info :author) info))
+   <span class=hljs-string >&quot;&lt;link href=\&quot;/css/style.css\&quot; rel=\&quot;stylesheet\&quot; style=\&quot;text/css\&quot; /&gt;\n&quot;</span>
+   <span class=hljs-string >&quot;&lt;/head&gt;\n&quot;</span>
+   <span class=hljs-string >&quot;&lt;body&gt;\n&quot;</span>
+   (format <span class=hljs-string >&quot;&lt;h1 class=\&quot;title\&quot;&gt;%s&lt;/h1&gt;\n&quot;</span>
+           (org-<span class=hljs-keyword >export</span>-data (or (plist-get info :title) <span class=hljs-string >&quot;&quot;</span>) info))
+   contents
+   <span class=hljs-string >&quot;&lt;/body&gt;\n&quot;</span>
+   <span class=hljs-string >&quot;&lt;/html&gt;\n&quot;</span>))
+
+
+(org-<span class=hljs-keyword >export</span>-define-derived-backend &#x27;pd-html &#x27;html
+  :translate-alist &#x27;((template . pd-html-template))
+  )
+
+(defun pd-html-publish-to-html (plist filename pub-dir)
+(org-publish-org-to &#x27;pd-html filename <span class=hljs-string >&quot;.html&quot;</span> plist pub-dir))</code></pre> <p>This function is passed to <code>org-publish-project-alist</code> variable with <code>publishing-function pd-html-publish-to-html</code>&#40;commented line previously&#41;.</p> <p>To conclude, I am delighted with my setup. It keeps me confident that I can use this setup for a long time since I don&#39;t have to compile the code, the <code>elisp</code> is not changing much, and I use only a single dependency which I can load locally without installing if significant changes happen.</p> <h2 id=references ><a href="#references" class=header-anchor >References</a></h2> <ul> <li><p>https://ogbe.net/blog/blogging<em>with</em>org.html </p> <li><p>http://blog.binchen.org/posts/how-to-publish-static-html-blog-in-emacs-as-a-programmer.html </p> <li><p>http://www.john2x.com/blog/blogging-with-orgmode.html </p> </ul> <div class=page-foot > <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> Janis Erdmanis. Last modified: August 11, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>. </div> </div> <script src="/libs/highlight/highlight.min.js"></script> <script>hljs.highlightAll();hljs.configure({tabReplace: ' '});</script>

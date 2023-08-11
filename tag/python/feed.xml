@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:media="http://search.yahoo.com/mrss/"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:georss="http://www.georss.org/georss">
+
+  <channel>
+    <title>
+      <![CDATA[  Janis Erdmanis  ]]>
+    </title>
+    <link> https://janiserdmanis.org </link>
+    <description>
+      <![CDATA[  My portfolio website  ]]>
+    </description>
+    <atom:link
+      href="https://janiserdmanis.org/feed.xml"
+      rel="self"
+      type="application/rss+xml" />
+
+
+<item>
+  <title>
+    <![CDATA[  Julia type system and multiple dispatch  ]]>
+  </title>
+  <link> https://janiserdmanis.org/blog/julia-experience/index.html </link>
+  <guid> https://janiserdmanis.org/blog/julia-experience/index.html </guid>
+  <description>
+    <![CDATA[  I used to be a Python advocate as having an interpreter, meaningful error messages, docstrings, and easy library installation made the scope of what I could build expand tremendously. But in 2015, the Cython, Numba or C interop story became unbearable for my MSc thesis project, and I made a plunge into Julia, and I never looked back. As saying says, you come to Julia for performance and stay there multiple dispatch, type system, REPL, Pkg and other neat things.  ]]>
+  </description>  
+    
+  <pubDate>Fri, 11 Aug 2023 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>Janis Erdmanis</atom:name>
+  </atom:author>
+        
+</item>
+
+<item>
+  <title>
+    <![CDATA[  The quantum fluctuations in the vicinity of Weyl point  ]]>
+  </title>
+  <link> https://janiserdmanis.org/blog/research-weyl-disk/index.html </link>
+  <guid> https://janiserdmanis.org/blog/research-weyl-disk/index.html </guid>
+  <description>
+    <![CDATA[  Superconductors exhibit unique charge transport, leading to intriguing interface phenomena with normal metals. Electrons and holes form closed trajectories at specific energies, known as Andreev-bound states. It is possible to envision a situation where Andreev-bound states can cross in superconducting phase space, forming Weyl points. But what if the superconducting phases are not fixed and are subject to quantum fluctuations near those Weyl points?  ]]>
+  </description>  
+    
+  <pubDate>Fri, 11 Aug 2023 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>Janis Erdmanis</atom:name>
+  </atom:author>
+        
+</item>
+</channel></rss>

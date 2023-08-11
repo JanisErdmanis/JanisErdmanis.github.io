@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:media="http://search.yahoo.com/mrss/"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:georss="http://www.georss.org/georss">
+
+  <channel>
+    <title>
+      <![CDATA[  Janis Erdmanis  ]]>
+    </title>
+    <link> https://janiserdmanis.org </link>
+    <description>
+      <![CDATA[  My portfolio website  ]]>
+    </description>
+    <atom:link
+      href="https://janiserdmanis.org/feed.xml"
+      rel="self"
+      type="application/rss+xml" />
+
+
+<item>
+  <title>
+    <![CDATA[  My CERN internship  ]]>
+  </title>
+  <link> https://janiserdmanis.org/blog/my-cern-trip/index.html </link>
+  <guid> https://janiserdmanis.org/blog/my-cern-trip/index.html </guid>
+  <description>
+    <![CDATA[  For two months this summer, I was part of the CERN summer student program. Upon arrival, my supervisor tasked me with exploring possibilities to capture or push the boundaries of one of the supersymmetry particles in the ATLAS experiment, following the major CERN breakthroughs. As there are also opportunities for you to apply this year I decided to share a little bit of my experience being there.  ]]>
+  </description>  
+    
+  <pubDate>Fri, 11 Aug 2023 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>Janis Erdmanis</atom:name>
+  </atom:author>
+        
+</item>
+
+<item>
+  <title>
+    <![CDATA[  Making presentations with Inkscape  ]]>
+  </title>
+  <link> https://janiserdmanis.org/blog/presentataions-with-inkscape/index.html </link>
+  <guid> https://janiserdmanis.org/blog/presentataions-with-inkscape/index.html </guid>
+  <description>
+    <![CDATA[  About six months ago, I came into difficulties while making a presentation with LibreOffice and started exploring alternatives like LaTeX Beamer and ipe. However, due to some bugs and limitations, I eventually turned to Inkscape, the best vector graphics editor on Linux, widely used by physicists for figure editing. A Sozi plugin allows to create a single-page poster-like layout and specify regions for each slide, resembling a whiteboard to organise thoughts and ideas.  ]]>
+  </description>  
+    
+  <pubDate>Fri, 11 Aug 2023 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>Janis Erdmanis</atom:name>
+  </atom:author>
+        
+</item>
+
+<item>
+  <title>
+    <![CDATA[  The quantum fluctuations in the vicinity of Weyl point  ]]>
+  </title>
+  <link> https://janiserdmanis.org/blog/research-weyl-disk/index.html </link>
+  <guid> https://janiserdmanis.org/blog/research-weyl-disk/index.html </guid>
+  <description>
+    <![CDATA[  Superconductors exhibit unique charge transport, leading to intriguing interface phenomena with normal metals. Electrons and holes form closed trajectories at specific energies, known as Andreev-bound states. It is possible to envision a situation where Andreev-bound states can cross in superconducting phase space, forming Weyl points. But what if the superconducting phases are not fixed and are subject to quantum fluctuations near those Weyl points?  ]]>
+  </description>  
+    
+  <pubDate>Fri, 11 Aug 2023 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>Janis Erdmanis</atom:name>
+  </atom:author>
+        
+</item>
+
+<item>
+  <title>
+    <![CDATA[  Properties of magnetic fluid droplets created by induced phase separation  ]]>
+  </title>
+  <link> https://janiserdmanis.org/blog/research-mdrop/index.html </link>
+  <guid> https://janiserdmanis.org/blog/research-mdrop/index.html </guid>
+  <description>
+    <![CDATA[  In my master&#39;s project, I investigated the behaviour of magnetic fluid droplets formed through induced phase separation under varying magnetic fields. When subjected to fast-rotating magnetic fields of different intensities, these droplets exhibit intricate shapes such as oblate, three-axial, and starfish. The project aimed to determine whether a simple magnetic drop model could explain this complex behaviour under strong magnetic fields, where equilibrium arises from the interplay between scalar surface tension and linear magnetic force.  ]]>
+  </description>  
+    
+  <pubDate>Fri, 11 Aug 2023 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>Janis Erdmanis</atom:name>
+  </atom:author>
+        
+</item>
+
+<item>
+  <title>
+    <![CDATA[  Understanding quantum state of emitted electron  ]]>
+  </title>
+  <link> https://janiserdmanis.org/blog/research-wigner/index.html </link>
+  <guid> https://janiserdmanis.org/blog/research-wigner/index.html </guid>
+  <description>
+    <![CDATA[  At a nanoscale at cold sub kelvin temperatures and large magnetic fields, an electron for a few centimetres flows like photons on optical fiber coherently. This enables envisioning an electron interferometer experiment on a solid state device; thus, a question on preparing an electron quantum state becomes important. In my BSc thesis project, I derived and, using Python, computed the resulting state of an electron emitted from an electric field veil lowering one of its barriers.  ]]>
+  </description>  
+    
+  <pubDate>Fri, 11 Aug 2023 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>Janis Erdmanis</atom:name>
+  </atom:author>
+        
+</item>
+</channel></rss>

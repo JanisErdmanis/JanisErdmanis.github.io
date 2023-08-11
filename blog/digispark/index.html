@@ -1,0 +1,209 @@
+<!doctype html> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/libs/highlight/styles/github.min.css"> <link rel=stylesheet  href="/css/franklin.css"> <link rel=stylesheet  href="/css/basic.css"> <link rel=icon  href="/assets/favicon.png"> <title>Building with Arduino and Digisparck</title> <header> <div class=blog-name ><a href="/">Janis Erdmanis</a></div> <nav> <ul> <li><a href="/cv/">CV</a> <li><a href="/blog/">Blog</a> <li><a href="/bookshelf/">BookShelf</a> </ul> </nav> </header> <div class=post-meta >Feb 21, 2017 | 2420 Words</div> <div class=franklin-content > <h1 id=building_with_arduino_and_digisparck ><a href="#building_with_arduino_and_digisparck" class=header-anchor >Building with Arduino and Digisparck</a></h1> <p>I bought my Arduino about 6 years ago after being impressed with how easy it is to make blinking lights and read a value from a potentiometer, and that was all for a very long time. I lost my curiosity about making anything more complex due to the ugly Arduino ide, debugging frustrations and lack of easy options for deploying what I make, keeping opportunities to load new software and keeping things as simple as possible. Now Digisparck is available, which uses a single Atiny85, giving six output pins and is programmable from USB.</p> <h2 id=arduino_and_digisparck ><a href="#arduino_and_digisparck" class=header-anchor >Arduino and Digisparck</a></h2> <p>Arduino is now the easiest way to start with digital electronics with good ide, libraries and community. When it came out about 6 or 7 years ago, I remember buying my first mega board for about 50 euros &#40;converting from 38 lats&#41;. Now it is available very cheaply on eBay &#40;for example Arduino Uno board costs about five euros&#41;. Arduino, however, is very often overkill for my small projects, and I feel bad when I am not utilising thighs with their boundaries. Thus when I heard about Digisparck, I was eager to try it.</p> <p>Digisparck is basically an Attiny85 &#40;about 1.15 euros&#41; with an easily programmable interface over USB and a voltage regulator on a single chip. It has six output/input pins with which you can attach I2C devices &#40;with SDA un SCK pins&#41; and analogue input devices for controlling relays. The port mapping for Digisparck is as follows:</p> <table><tr><th align=right >Digital<th align=right >Analog<th align=right >Other<tr><td align=right >P0<td align=right >-<td align=right >SDA<tr><td align=right >P1<td align=right >-<td align=right >-<tr><td align=right >P2<td align=right >A1<td align=right >SCK<tr><td align=right >P3<td align=right >A2<td align=right >-<tr><td align=right >P4<td align=right >A3<td align=right >-<tr><td align=right >P5<td align=right >A0<td align=right >Reset</table> <p>Also, it can count time but with a precision of 5 minutes in 24 hours with its 8-bit clock, and you can make logic in its 8 kb internal memory with 512 bytes of RAM. It is cheap &#40;about 1.30 euros&#41; and conveniently small, so I have no worries about making my deployable application small and practical looking.</p> <p>But with such simplicity also comes sacrifices. Due to small memory and RAM, some Arduino libraries do not fit these constraints. Fortunately for many of them, analogue versions of libraries for attiny85 exist developed by makers of Digisparck, allowing to use of many Arduino programs with simple replacements in a header file. </p> <p>A significant limitation with Digisparck is being unable to debug your code easily as there is no serial monitor as Arduino does. The situation might look even as desperate as the code:</p> <pre><code class="julia hljs">void Blink(byte led, byte times){ // poor man&#x27;s GUI
+  <span class=hljs-keyword >for</span> (byte i=<span class=hljs-number >0</span>; i&lt; times; i++){
+    digitalWrite(led,HIGH);
+    delay (<span class=hljs-number >400</span>);
+    digitalWrite(led,LOW);
+    delay (<span class=hljs-number >175</span>);
+  }
+}</code></pre> <p>Fortunately, solutions like emulating a Serial port or Arduino USB device are available, which I will show here. Limitations like these are the ones I like to push creatively, and you will find something in Debugging section.</p> <h2 id=makefile ><a href="#makefile" class=header-anchor >Makefile</a></h2> <h3 id=arduino ><a href="#arduino" class=header-anchor >Arduino</a></h3> <p>While usual, Arduino ide is good for seeing out what&#39;s possible with Arduino; it is frustrating not typing programs in your way. Fortunately, many felt the same way; thus, the community makes a makefile for Arduino. A very good introduction to how to use it can be found in a <a href="http://hackaday.com/2015/10/01/arduino-development-theres-a-makefile-for-that/">Hackaday blog post</a>. Here I will outline how I use it with a system which had been configured with</p> <pre><code class="julia hljs">sudo apt-get install python-serial arduino-mk</code></pre>
+<p>Before I can compile code, I need to set up a project directory. I have a Tools directory where I store custom code uploaders and Arduino makefile, thus making my projects less dependable on the system I use and subproject directories. In those, I have a <code>libs</code> folder, simple makefile and Arduino sketch file <code>.ino</code>. A cleaned-up tree from my projects directory looks as follows:</p>
+<pre><code class="julia hljs">├── Tools
+│   ├── Arduino.mk
+│   ├── micronucleus-t85
+│   │   ├── commandline
+│   │   │   ├── Makefile
+│   │   │   ├── micronucleus
+│   │   │   ├── micronucleus.c
+├── Blink
+│   ├── ATtinyBlink.ino
+│   ├── build-attiny
+│   ├── build-mega
+│   ├── Makefile
+├── DebugShield
+│   ├── build-mega
+│   ├── DebugShield.ino
+│   ├── libs
+│   │   └── SoftwareSerial
+│   └── Makefile
+├── DebuggingCDC
+│   ├── build-attiny
+│   ├── libs
+│   │   └── DigisparkCDC
+│   ├── Makefile
+│   ├── Print.ino
+│   └── readme.org
+├── SmartRheostat
+│   ├── build-attiny
+│   ├── libs
+│   │   └── SendOnlySoftwareSerial
+│   │       ├── keywords.txt
+│   │       ├── SendOnlySoftwareSerial.cpp
+│   │       └── SendOnlySoftwareSerial.h
+│   ├── Makefile
+│   └── SmartRheostat.ino</code></pre>
+<p>The full power could be demonstrated in my <code>DebugShield</code> project, which depends on the <code>SoftwareSerial</code> library &#40;where Arduino versions can be found in <code>/usr/share/arduino/libraries</code> with examples in <code>/usr/share/arduino/examples</code>&#41;; thus, my makefile for this project is</p>
+<pre><code class="julia hljs">BOARD_TAG = mega
+
+USER_LIB_PATH+=./libs
+ARDUINO_LIBS += SoftwareSerial
+
+include ../Tools/Arduino.mk</code></pre>
+<p>which allows to compile and upload with a single command <code>sudo make upload,</code> and afterwards allows to see the serial output in a terminal with <code>make monitor</code> in screen environment &#40;to exit it <code>Ctrl-a k</code>&#41;. </p>
+<h3 id=digisparck ><a href="#digisparck" class=header-anchor >Digisparck</a></h3>
+<p>Microcontrollers &#40;as attiny85&#41; are usually programmed with ISP programmers, which requires taking the microcontroller out and putting it on the programmer. Thus limiting options to adjust your deployed application. There are two simplifications which are possible in this working setup. The first is to program attiny85 directly from USB, and the second is adding a USB port to your project.</p>
+<p>Attiny85 does not have a USB interface to program it; thus, a workaround is to initially burn the startup program &#40;bootloader&#41; with ISP, which would listen to the USB programmer, and then every time you burn program attiny85 over USB, you automatically add bootloader for being able to program on next time. Thus the basic formula for Digisparck is</p>
+<pre><code class="julia hljs">Digisparck = attiny85 + bootloader + USB port.</code></pre>
+<p>The bootloader which is burned with Digisparck is <a href="https://github.com/micronucleus/micronucleus">Micronucleus</a>. It takes about 1.5 kb of precios attiny85 memory and adds a 5-second delay &#40;adjustable&#41; when Attiny listens to the USB micronucleus uploader until it enters in user application. Except for having to reattach the digipack to USB every time one wants to program it, the user experience can be the same as with Arduino makefile. </p>
+<p>When a micronucleus burner is installed on the system, the following Makefile should work:</p>
+<pre><code class="julia hljs">BOARD_TAG    = attiny
+USER_LIB_PATH+=./libs
+ARDUINO_LIBS += SendOnlySoftwareSerial
+
+ALTERNATE_CORE_PATH = ../Tools/digispark
+ARDUINO_CORE_PATH = ../Tools/digispark/cores/tiny
+ARDUINO_DIR = ../Tools/digispark
+MCU = attiny85
+ISP_PROG = micronucleus
+<span class=hljs-comment >#ISP_PROG = ../Tools/micronucleus-t85/commandline/micronucleus</span>
+F_CPU = <span class=hljs-number >16000000</span>L</code></pre>
+<p>To use it, do <code>sudo make upload</code> and attach your Digisparck device. But before uploading, <em>check if the application does not exceed 6 kb;</em> otherwise, the Micronucleus bootloader will be pushed out and thus no longer be able to program the device over USB until it is burned back with the ISP programmer.</p>
+<p>There are, however, rough edges with both makefiles for Arduino and Digisparck. For the Arduino makefile, I have to install Arduino while I need only a very small part of that beast. For the digipack makefile, I have to install the micronucleus system-wide, which is not available from standard Ubuntu repositories where. I tried to use Micronucleus from my Tools folder, but it did not work. These are, however, very small issues compared to the problems it solves - being able to use your own editor and a consistent environment between Arduino and Digisparck development, except for debugging.</p>
+<h2 id=debugging ><a href="#debugging" class=header-anchor >Debugging</a></h2>
+<p>When I want to debug Arduino code, I add <code>Serial.println&#40;&quot;My debug message&quot;&#41;</code> statements everywhere in the code and listen to them on my computer with <code>make monitor</code>. This functionality is supported by a microcontroller, which Arduino uses &#40;the UART protocol&#41; and an onboard adapter, which translates Serial pins &#40;TX and RX&#41; to a USB device. Neither of these is available on Digisparck. Thus, it gets very interesting how I can debug my projects. </p>
+<h3 id=digiusb ><a href="#digiusb" class=header-anchor >DigiUSB</a></h3>
+<p>While, as I said, one can use a single led to see if one gets the correct value from sensors, it is also possible to put a USB Arduino emulator on attiny85 what <a href="https://github.com/digistump/DigistumpArduino/tree/master/digistump-avr/libraries/DigisparkCDC">DigiCDC</a> library does. The drawback of this approach is that it takes about 2.5 kb of precious Attiny&#39;s memory, and I couldn&#39;t get it to work. But it is such a fantastic solution that I couldn&#39;t mention.</p>
+<p>For printing serial output with Digisparck, it should be possible to use the library simply in the following manner:</p>
+<pre><code class="julia hljs"><span class=hljs-comment >#include &lt;DigiCDC.h&gt;</span>
+void setup() {                
+  // initialize the digital pin as an output.
+  SerialUSB.<span class=hljs-keyword >begin</span>(); 
+  /*
+  remember the SerialUSB starts as soon as you call <span class=hljs-keyword >begin</span> 
+  and doesn&#x27;t restart the board when you open the serial monitor 
+  (like the uno does) - so <span class=hljs-keyword >if</span> you print to it and you don&#x27;t 
+  have a serial monitor open that text is lost.
+  */
+}
+// the loop routine runs over and over again forever:
+void loop() {
+
+   //SerialUSB.println(F(<span class=hljs-string >&quot;TEST!&quot;</span>)); //wrap your strings <span class=hljs-keyword >in</span> F() to save ram!
+   SerialUSB.println(<span class=hljs-string >&quot;TEST!&quot;</span>); //wrap your strings <span class=hljs-keyword >in</span> F() to save ram!
+
+  //   SerialUSB.delay(<span class=hljs-number >10</span>);
+   /*
+   <span class=hljs-keyword >if</span> you don&#x27;t call a SerialUSB <span class=hljs-keyword >function</span> (write, print, read, available, etc) 
+   every <span class=hljs-number >10</span>ms or less then you must throw <span class=hljs-keyword >in</span> some SerialUSB.refresh(); 
+   <span class=hljs-keyword >for</span> the USB to keep alive - also replace your delays - ie. delay(<span class=hljs-number >100</span>); 
+   with SerialUSB.delays ie. SerialUSB.delay(<span class=hljs-number >100</span>);
+   */
+}</code></pre>
+<p>When this program is burned into Digisprack, my computer recognises it as Arduino serial device and allows me to use <code>make monitor</code>. However, I couldn&#39;t see printed messages in it. Apart from that, it is such extraordinary work by developers&#33; </p>
+<h2 id=sendonlysoftwareserial ><a href="#sendonlysoftwareserial" class=header-anchor >SendOnlySoftwareSerial</a></h2>
+<p>A much simpler solution is to use a SoftwareSerial library from Arduino, where I did not need a receiving function. Thus to get out most juice of attiny85, I use <a href="http://gammon.com.au/Arduino/SendOnlySoftwareSerial.zip">SendOnlySoftwareSerial</a> library. It uses 1.5 kb for the simplest hello world example, but I have seen it reduce to 0.5 kb when I used the TinyWire library. An example that I used is for my rheostat project:</p>
+<pre><code class="julia hljs"><span class=hljs-comment >#include &lt;SendOnlySoftwareSerial.h&gt;</span>
+
+SendOnlySoftwareSerial mySerial (<span class=hljs-number >3</span>);  // Tx pin
+int sensorPin = <span class=hljs-number >1</span>; 
+int ledpin = <span class=hljs-number >1</span>;
+
+void setup() {
+  mySerial.<span class=hljs-keyword >begin</span>(<span class=hljs-number >9600</span>);
+  pinMode(ledpin, OUTPUT);
+}
+
+void loop() {
+  delay(<span class=hljs-number >1000</span>);
+
+  int reading = analogRead(sensorPin);
+  // converting that reading to voltage, <span class=hljs-keyword >for</span> <span class=hljs-number >3.3</span>v arduino use <span class=hljs-number >3.3</span>
+  float voltage = reading * <span class=hljs-number >5.0</span>;
+  voltage /= <span class=hljs-number >1024.0</span>; 
+     
+  // now print out the temperature
+  float temperatureC = (voltage - <span class=hljs-number >0.5</span>) * <span class=hljs-number >100</span> ;  //converting from <span class=hljs-number >10</span> mv per degree wit <span class=hljs-number >500</span> mV offset *
+  //to degrees ((voltage - <span class=hljs-number >500</span>mV) times <span class=hljs-number >100</span>) 
+  mySerial.println(temperatureC);
+
+  <span class=hljs-keyword >if</span> (temperatureC&lt;<span class=hljs-number >65.</span>) {
+    digitalWrite(ledpin, LOW);
+    <span class=hljs-keyword >return</span>;
+  }
+
+  <span class=hljs-keyword >if</span> (temperatureC&gt;<span class=hljs-number >70.</span>) {
+    digitalWrite(ledpin, HIGH); 
+    <span class=hljs-keyword >return</span>;
+  }
+    
+}</code></pre>
+<p>I initialise digital pin 3 as an output for a serial accessible from the Digisparck USB port. Thus only a device which would listen to serial output is needed. &#40;Here, one can also see the most confusing aspect of Digisparck programming is that analogue input pins are enumerated differently from digital ones.&#41; </p>
+<h2 id=debugger_with_arduino ><a href="#debugger_with_arduino" class=header-anchor >Debugger with Arduino</a></h2>
+<p>To get serial output understandable to my pc, I use Arduino for message redirection. Because its Arduino, I also add an LCD display for seeing the state, and thus my serial to USB adapter is as follows:</p>
+<pre><code class="julia hljs"><span class=hljs-comment >#include &lt;LiquidCrystal.h&gt;</span>
+<span class=hljs-comment >#include &lt;SoftwareSerial.h&gt;</span>
+
+SoftwareSerial mySerial(<span class=hljs-number >13</span>, <span class=hljs-number >12</span>); // RX, TX
+LiquidCrystal lcd(<span class=hljs-number >7</span>,<span class=hljs-number >6</span>,<span class=hljs-number >5</span>,<span class=hljs-number >4</span>,<span class=hljs-number >3</span>,<span class=hljs-number >2</span>);
+
+<span class=hljs-built_in >String</span> inputString = <span class=hljs-string >&quot;&quot;</span>;         // a string to hold incoming data
+boolean stringComplete = <span class=hljs-literal >false</span>;  // whether the string is complete201~
+
+void setup() {
+  inputString.reserve(<span class=hljs-number >200</span>);
+
+  // set up the LCD&#x27;s number of columns and rows:
+  lcd.<span class=hljs-keyword >begin</span>(<span class=hljs-number >8</span>, <span class=hljs-number >2</span>);
+  // Print a message to the LCD.
+  lcd.print(<span class=hljs-string >&quot;hello, world!&quot;</span>);
+
+  Serial.<span class=hljs-keyword >begin</span>(<span class=hljs-number >9600</span>);
+  <span class=hljs-keyword >while</span> (!Serial) {
+    ; // wait <span class=hljs-keyword >for</span> serial port to connect. Needed <span class=hljs-keyword >for</span> native USB port only
+  }
+  Serial.println(<span class=hljs-string >&quot;Goodnight moon!&quot;</span>);
+  // set the data rate <span class=hljs-keyword >for</span> the SoftwareSerial port
+  mySerial.<span class=hljs-keyword >begin</span>(<span class=hljs-number >9600</span>);
+  mySerial.println(<span class=hljs-string >&quot;Hello, world?&quot;</span>);
+}
+
+void loop() {
+
+  <span class=hljs-keyword >if</span> (stringComplete) {
+    lcd.setCursor(<span class=hljs-number >0</span>,<span class=hljs-number >0</span>);
+    lcd.print(inputString.substring(<span class=hljs-number >0</span>,<span class=hljs-number >8</span>));
+
+    <span class=hljs-keyword >if</span> (inputString.length()-<span class=hljs-number >2</span> &gt; <span class=hljs-number >8</span>) {
+      lcd.setCursor(<span class=hljs-number >0</span>, <span class=hljs-number >1</span>);
+      lcd.print(inputString.substring(<span class=hljs-number >8</span>,inputString.length()-<span class=hljs-number >2</span>));
+    }
+    inputString = <span class=hljs-string >&quot;&quot;</span>;
+    stringComplete = <span class=hljs-literal >false</span>;
+  }
+
+  <span class=hljs-keyword >if</span> (mySerial.available()) {
+    char inChar = (char)mySerial.read();
+    Serial.write(inChar);
+    inputString += inChar;
+    <span class=hljs-keyword >if</span> (inChar==&#x27;\n&#x27;) {
+      stringComplete = <span class=hljs-literal >true</span>;
+    }
+  }
+  <span class=hljs-keyword >if</span> (Serial.available()) {
+    mySerial.write(Serial.read());
+  }
+}</code></pre>
+<p>This code allows me to use Arduino pin 13 for receiving messages from my Digisparck.</p>
+<p><img src=arduino-debugger.jpg  alt="" /></p>
+<p>In the picture is my Digisparck project, where a debugger can be seen in use showing sensor value &#40;temperature&#41;. Particularly in this project, I read the temperature from my firewood boiler, which starts or stops the water pump to extend burning time, burn at optimal temperature and reduce electricity costs. </p>
+<h2 id=developing_and_deploying ><a href="#developing_and_deploying" class=header-anchor >Developing and Deploying</a></h2>
+<p>Once my Digisparck project is ready, I must think about the power supply. As the voltage regulator is on top of Digisparck, you can attach it to a 9V battery which should work fine for some days, depending on how you save power. I use old phone chargers for always-on projects, which convert power efficiently even when the power output is as tiny as 0.1 W. </p>
+<p>A common thought that modern electronic chargers &#40;like phones, laptops, etc...&#41; should be detached from electricity to be greener is based on something other than research. The energy waste is very insignificant compared to waste you probably get from electricity-attached microwaves, ovens or blenders due to very cheap powering like <a href="&#91;http://electronics.stackexchange.com/questions/41938/230v-ac-to-5v-dc-converter-lossless&#93;&#91;Non-isolating Zener supply&#93;">230v-ac-to-5v-dc-converter-lossless</a> and a good discussion can be found on <a href="https://www.reddit.com/r/explainlikeimfive/comments/45om7h/eli5_ive_heard_that_leaving_wallphone_chargers/">reddit</a>. But for projects where I am using relays &#40;as above&#41; I have found that HLK-PM01 is a great value which on eBay available for 2.5 euro and is easy to solder in my projects.</p>
+<div class=page-foot >
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> Janis Erdmanis. Last modified: August 11, 2023.
+    Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+</div>
+</div>
+    
+    
+        <script src="/libs/highlight/highlight.min.js"></script>
+<script>hljs.highlightAll();hljs.configure({tabReplace: '    '});</script>

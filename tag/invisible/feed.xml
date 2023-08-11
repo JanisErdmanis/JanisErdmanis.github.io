@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:media="http://search.yahoo.com/mrss/"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:georss="http://www.georss.org/georss">
+
+  <channel>
+    <title>
+      <![CDATA[  Janis Erdmanis  ]]>
+    </title>
+    <link> https://janiserdmanis.org </link>
+    <description>
+      <![CDATA[  My portfolio website  ]]>
+    </description>
+    <atom:link
+      href="https://janiserdmanis.org/feed.xml"
+      rel="self"
+      type="application/rss+xml" />
+
+
+<item>
+  <title>
+    <![CDATA[  How evoting could help for democracy?  ]]>
+  </title>
+  <link> https://janiserdmanis.org/blog/evote-democracy/index.html </link>
+  <guid> https://janiserdmanis.org/blog/evote-democracy/index.html </guid>
+  <description>
+    <![CDATA[  There is a great difficulty in designing an electronic voting system that combines transparency, user verifiability, anonymity, and resistance against bribery. In response to this, I propose a decentralized scheme, utilizing a Github-like repository where a board of members with merge rights represents a virtual state.  ]]>
+  </description>  
+    
+  <pubDate>Fri, 11 Aug 2023 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>Janis Erdmanis</atom:name>
+  </atom:author>
+        
+</item>
+
+<item>
+  <title>
+    <![CDATA[  How I used to make this page  ]]>
+  </title>
+  <link> https://janiserdmanis.org/blog/org-publish/index.html </link>
+  <guid> https://janiserdmanis.org/blog/org-publish/index.html </guid>
+  <description>
+    <![CDATA[  This web page is hosted with Github Pages from my GitHub repository for free. The tradeoff is that you can serve only static pages and content. This is where I and many others develop creative solutions since no one likes to write plain HTML. I use .org files for my journal and other note-taking things; thus, taking inspiration from others, I compile my org sources to static HTML with a single Elisp script.  ]]>
+  </description>  
+    
+  <pubDate>Fri, 11 Aug 2023 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>Janis Erdmanis</atom:name>
+  </atom:author>
+        
+</item>
+
+<item>
+  <title>
+    <![CDATA[  Electronic voting system based on ring signatures  ]]>
+  </title>
+  <link> https://janiserdmanis.org/blog/evote/index.html </link>
+  <guid> https://janiserdmanis.org/blog/evote/index.html </guid>
+  <description>
+    <![CDATA[  Inspired by Monero cryptocurrency&#39;s transparency and anonymity, I propose a decentralized voting scheme based on universal ring signatures. In this scheme, citizens would receive ID cards containing private keys for signing messages, and a central authority would manage public keys and messages for parties. While the idea offers potential benefits, I discuss challenges such as complex implementation, security concerns.  ]]>
+  </description>  
+    
+  <pubDate>Fri, 11 Aug 2023 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>Janis Erdmanis</atom:name>
+  </atom:author>
+        
+</item>
+
+<item>
+  <title>
+    <![CDATA[  Git for evoting?  ]]>
+  </title>
+  <link> https://janiserdmanis.org/blog/democracy-credit/index.html </link>
+  <guid> https://janiserdmanis.org/blog/democracy-credit/index.html </guid>
+  <description>
+    <![CDATA[  A foundation for an electronic voting system could be established through a git-based repository, with contributors possessing merge rights functioning as a governing body. This body would ensure precise vote tallying and supervise the execution of approved proposals. In this context, I suggest an electronic voting system wherein a trusted party equitably distributes public keys to members, enabling them to cast their votes.  ]]>
+  </description>  
+    
+  <pubDate>Fri, 11 Aug 2023 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>Janis Erdmanis</atom:name>
+  </atom:author>
+        
+</item>
+
+<item>
+  <title>
+    <![CDATA[  Some thoughts on electronic voting  ]]>
+  </title>
+  <link> https://janiserdmanis.org/blog/electronic-voting/index.html </link>
+  <guid> https://janiserdmanis.org/blog/electronic-voting/index.html </guid>
+  <description>
+    <![CDATA[  Every time when I hear about upcoming elections, I imagine a future where I can vote from anywhere for officials who truly represent our state&#39;s interests. However, the trust issues inherent in conventional centralized or blockchain-based electronic voting systems quickly dampen this dream. Despite these challenges, I believe trust concerns can be overcome and have embarked on the intellectual challenge of designing a solution based on modern cryptographic algorithms.  ]]>
+  </description>  
+    
+  <pubDate>Fri, 11 Aug 2023 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>Janis Erdmanis</atom:name>
+  </atom:author>
+        
+</item>
+</channel></rss>

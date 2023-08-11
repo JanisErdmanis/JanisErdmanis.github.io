@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:media="http://search.yahoo.com/mrss/"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:georss="http://www.georss.org/georss">
+
+  <channel>
+    <title>
+      <![CDATA[  Janis Erdmanis  ]]>
+    </title>
+    <link> https://janiserdmanis.org </link>
+    <description>
+      <![CDATA[  My portfolio website  ]]>
+    </description>
+    <atom:link
+      href="https://janiserdmanis.org/feed.xml"
+      rel="self"
+      type="application/rss+xml" />
+
+
+<item>
+  <title>
+    <![CDATA[  From a cloud to a personalized edge   ]]>
+  </title>
+  <link> https://janiserdmanis.org/blog/cloud-edge/index.html </link>
+  <guid> https://janiserdmanis.org/blog/cloud-edge/index.html </guid>
+  <description>
+    <![CDATA[  Dropbox offers a great alternative to hosting your own SAMBA server and provides a stable and user-friendly experience, but the space limitations without a subscription plan and being into vendor lock-in led me to the search for alternatives. Eventually, I found hope in the BitTorrent Sync technology, which allows limitless storage and fast data sharing without relying on cloud storage. Here I show my setup with Raspberries using BitTorrent Sync and how I have configured it with an RClone cron job to synchronise with the cloud.  ]]>
+  </description>  
+    
+  <pubDate>Fri, 11 Aug 2023 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>Janis Erdmanis</atom:name>
+  </atom:author>
+        
+</item>
+</channel></rss>

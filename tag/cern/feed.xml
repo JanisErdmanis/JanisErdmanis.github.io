@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:media="http://search.yahoo.com/mrss/"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:georss="http://www.georss.org/georss">
+
+  <channel>
+    <title>
+      <![CDATA[  Janis Erdmanis  ]]>
+    </title>
+    <link> https://janiserdmanis.org </link>
+    <description>
+      <![CDATA[  My portfolio website  ]]>
+    </description>
+    <atom:link
+      href="https://janiserdmanis.org/feed.xml"
+      rel="self"
+      type="application/rss+xml" />
+
+
+<item>
+  <title>
+    <![CDATA[  My CERN internship  ]]>
+  </title>
+  <link> https://janiserdmanis.org/blog/my-cern-trip/index.html </link>
+  <guid> https://janiserdmanis.org/blog/my-cern-trip/index.html </guid>
+  <description>
+    <![CDATA[  For two months this summer, I was part of the CERN summer student program. Upon arrival, my supervisor tasked me with exploring possibilities to capture or push the boundaries of one of the supersymmetry particles in the ATLAS experiment, following the major CERN breakthroughs. As there are also opportunities for you to apply this year I decided to share a little bit of my experience being there.  ]]>
+  </description>  
+    
+  <pubDate>Fri, 11 Aug 2023 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>Janis Erdmanis</atom:name>
+  </atom:author>
+        
+</item>
+</channel></rss>

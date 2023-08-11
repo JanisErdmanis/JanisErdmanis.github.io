@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:media="http://search.yahoo.com/mrss/"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:georss="http://www.georss.org/georss">
+
+  <channel>
+    <title>
+      <![CDATA[  Janis Erdmanis  ]]>
+    </title>
+    <link> https://janiserdmanis.org </link>
+    <description>
+      <![CDATA[  My portfolio website  ]]>
+    </description>
+    <atom:link
+      href="https://janiserdmanis.org/feed.xml"
+      rel="self"
+      type="application/rss+xml" />
+
+
+<item>
+  <title>
+    <![CDATA[  The tool on my desk: ReMarkable tablet  ]]>
+  </title>
+  <link> https://janiserdmanis.org/blog/remarkable/index.html </link>
+  <guid> https://janiserdmanis.org/blog/remarkable/index.html </guid>
+  <description>
+    <![CDATA[  I used to spend countless hours to make reading and note-taking experience better with the tools I had, a laptop and Kindle eink reader, but the efforts I was investing made me unsatisfied with the result. Perhaps I am easily disturbed by nuisances - eye irritation, unreadability, synchronisation, and convenience - which stood before my goals and started forming a goal itself. If only there would have been A4 sized e-reader on which one could write at that time. Meet ReMarkable&#33;  ]]>
+  </description>  
+    
+  <pubDate>Fri, 11 Aug 2023 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>Janis Erdmanis</atom:name>
+  </atom:author>
+        
+</item>
+</channel></rss>
