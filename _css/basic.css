@@ -1,0 +1,180 @@
+/* ==================================================================
+    Header and Nav
+================================================================== */
+
+
+nav {
+  width: 100%;
+  display: inline-block;
+}
+
+nav ul {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: right;
+}
+
+nav li {
+  display: inline-block;
+  padding-left: 2em;
+}
+
+a:hover {
+    color: #397ab4;
+}
+
+a {
+    color: black;
+    transition: color 0.3s ease;
+}
+
+
+nav li a {
+  /* color: black; */
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: bold;
+  display: inline-block;
+  float: center;
+  font-weight: 800;
+}
+
+header {
+  margin-top: 0px;
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  font-family: 'Iosevka YMHG Web', monospace;
+  /* align-items: stretch; */
+  /* flex-grow: 1; */
+  width: 100%;
+  justify-content: space-between;
+  padding: 1rem 0;
+  
+}
+
+header .blog-name {
+  text-align: left;
+  font-size: 1.3rem;
+  font-family: 'Iosevka YMHG Web', monospace;
+  flex-shrink: 0;
+}
+
+header .blog-name a {
+  text-decoration: none;
+  font-weight: 800;
+}
+
+
+table {
+  line-height: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  text-align: center;
+  margin-bottom: 1.5em;
+}
+
+tr:first-of-type > th {
+  text-align: center;
+  border-right: none;
+  border-left: none;
+  
+}
+
+tr,
+th,
+td {
+  padding: 10px;
+  border-top: 1px solid lightgray;
+}
+
+table tbody tr td {
+  border-top: 1px solid lightgray;
+}
+
+.post-meta {
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+.post-title { /* < a */
+    font-weight: bold;
+    font-family: 'Iosevka YMHG Web', monospace;
+    font-size: 1.15rem;
+    text-decoration: none;
+    
+}
+
+a {
+  color: #171d30;
+}
+
+nav a, .logo a, .post-title a, .social a, .rightcolumn a, dt a {
+  color: #171d30;
+}
+
+
+/* --------------------------------------- GOODREADS ---------------------- */
+
+.gr_grid_container {
+    /* position: fixed; */
+    margin: 0 auto;
+    overflow:hidden;
+    /* width: 700px ; */
+
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+
+
+    align-items: center;
+    margin: auto;
+    place-self: center;
+
+    /* customize grid container div here. eg: width: 500px; */
+}
+
+.gr_grid_book_container {
+    /* customize book cover container div here */
+    float: left;
+    min-width: 110px;
+    height: 176px;
+    padding: 0px 0px;
+    overflow: hidden;
+}
+
+.gr_grid_book_container * img {
+    width: 100%;
+    max-width: none;
+    border-radius: 0;
+}
+
+/* ------------------------------------------------------------------------ */
+
+
+/* ==================================================================
+   Print friendly
+================================================================== */
+
+@media print {
+    /* body { */
+    /*     background-color: white; */
+        
+    /* } */
+
+    header, .page-foot {
+        display: none !important;
+    }
+
+    
+    body {
+        /* Need to fix fontsizes and paddings to be relative
+           Currently fixing to 70% scale seems do the trick
+       */
+    }
+
+}
