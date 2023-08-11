@@ -208,63 +208,59 @@ a[role=button]:hover {
 }
 
 
-@media (hover: hover)  {
+.card:after {
+    transform: translateY(0);
+}
 
-
-  .card:after {
-      transform: translateY(0);
-  }
-
-  .content {
+.content {
     transform: translateY(calc(100% - 4.5rem));
-  }
-  .content > *:not(.title) {
+}
+.content > *:not(.title) {
     opacity: 0;
     transform: translateY(1rem);
     transition: transform var(--d) var(--e), opacity var(--d) var(--e);
-  }
+}
 
-  .card:hover,
+.card:hover,
 .card:focus-within {
     align-items: center;
 
-  }
-  .card:hover:before,
+}
+.card:hover:before,
 .card:focus-within:before {
     transform: translateY(-4%);
     filter: blur(5px)
-  }
+}
 
 .card:nth-child(3):hover:before {
-      background-image: url(../artefacts/star-out.gif);
+    background-image: url(../artefacts/star-out.gif);
 }
 
 .card:nth-child(4):hover:before {
-      background-image: url(../artefacts/optimal-pulse.gif);
+    background-image: url(../artefacts/optimal-pulse.gif);
 }
 
 
-  .card:hover:after,
+.card:hover:after,
 .card:focus-within:after {
     transform: translateY(-50%);
     background-color:rgba(255, 255, 255, 0.75);
-  }
-  .card:hover .content,
+}
+.card:hover .content,
 .card:focus-within .content {
     transform: translateY(0);
     color: #363636;
 
-  }
-  .card:hover .content > *:not(.title),
+}
+.card:hover .content > *:not(.title),
 .card:focus-within .content > *:not(.title) {
     opacity: 1;
     transform: translateY(0);
     transition-delay: calc(var(--d) / 8);
-  }
+}
 
-  .card:focus-within:before, .card:focus-within:after,
+.card:focus-within:before, .card:focus-within:after,
 .card:focus-within .content,
 .card:focus-within .content > *:not(.title) {
     transition-duration: 0s;
-  }
 }
