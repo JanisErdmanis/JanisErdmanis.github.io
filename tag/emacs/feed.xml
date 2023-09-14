@@ -31,7 +31,7 @@
     <![CDATA[  The user faced usability issues with the Gmail web application, which led me to explore email client alternatives on Ubuntu like Geary and Nylas1, but those also had limitations and bugs. Eventually, I discovered mu4e in Emacs, which provided efficient and distraction-free email management with offline capabilities. However, I had to overcome various challenges to set up my almost perfect email system.  ]]>
   </description>  
     
-  <pubDate>Fri, 11 Aug 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Thu, 14 Sep 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -50,7 +50,7 @@
     <![CDATA[  This web page is hosted with Github Pages from my GitHub repository for free. The tradeoff is that you can serve only static pages and content. This is where I and many others develop creative solutions since no one likes to write plain HTML. I use .org files for my journal and other note-taking things; thus, taking inspiration from others, I compile my org sources to static HTML with a single Elisp script.  ]]>
   </description>  
     
-  <pubDate>Fri, 11 Aug 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Thu, 14 Sep 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
