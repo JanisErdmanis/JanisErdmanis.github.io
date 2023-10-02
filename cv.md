@@ -18,19 +18,19 @@ CV
 
 - **2017 - 2021** Quantum effects of superconducting phase, TU Delft, NL (s. Yuli Nazarov)
 - **2016** Summer internship at SUSY data analysis group, CERN, CH (s. Simone Amoroso)
-- **2015 - 2017** Magnetic micro-droplet in rotating field, University of Latvia, LV (s. Andrejs Cebers)
+- **2015 - 2017** Magnetic micro-droplet in a rotating field, University of Latvia, LV (s. Andrejs Cebers)
 - **2014 - 2015** Electron on-demand emission, University of Latvia, LV (s. Vyacheslavs Kascheyevs)
 
 ## Education
 
 - **2017 - 2021** PhD in "Quantum effects of superconducting phase" at TU Delft, NL
-- **2014 - 2016** MSc in Physics at University of Latvia, LV
+- **2014 - 2016** MSc in Physics at the University of Latvia, LV
 - **2015** Spring semester at Umeå University with ERASMUS, SWE
-- **2011 - 2014** BSc in Physics at University of Latvia, LV
+- **2011 - 2014** BSc in Physics at the University of Latvia, LV
 
 ## Awards
 
-- **2011 - 2014** Study scholarship “Jura Melbārža piemiņas stipendija” from “Vitolu fonds”
+- **2011 - 2014** Study scholarship in memory of Juris Melbārdis from Vītols Fund
 - **2009** Acknowledgment in Latvia's National Physics Olympiad
 
 ## Languages
@@ -42,9 +42,9 @@ CV
 ## Skills
 
 - **Programming languages:** Julia, QML, Javascript, Python, C, C++, bash
-- **Typesetting languages:** LaTeX, Markdown, HTML, CSS
+- **Typesetting languages:** LaTeX, Markdown, HTML, CSS, PlantUML
 - **CMD Tools**: ssh, rsync, git, emacs, PBS cluster
-- **GUI Tools:** Inkscape, Sketch<!-- , StarUML -->
+- **GUI Tools:** Inkscape, Sketch
 - **Protocols and schemes:** REST, HTTP, JSON, ASN.1, HMAC, PKI, ZKP
 
 ## Open Source Projects
@@ -56,21 +56,25 @@ CV
 
 ## Personal interests
 
-- **Sports:** swiming, runing, cycling, skate skiing and snowboarding
-- Software design and tehnologies for long term maintainability and abstraction for modularity
-- **Reading:** fiction, psychology, political economics, phylosophy and antrophology
-- **DIY:** solar panel installation, electrical wiring, open source surveilance camera sytems, woodworking
-- **Cryptography and Security:** public key cryptography, zero knowledge proofs, blind signatures, authetification protocols and digital identity, buletin boards, publically verifiable software independent remote evoting systems, 
+- **Sports:** swimming, running, cycling, skate skiing and snowboarding
+- Software design and technologies for long-term maintainability and abstraction for modularity
+- **Reading:** fiction, psychology, political economics, philosophy and anthropology
+- **DIY:** solar panel installation, electrical wiring, open source surveillance camera systems, woodworking
+- **Cryptography and Security:** public key cryptography, zero-knowledge proofs, blind signatures, authentification protocols and digital identity, bulletin boards, publically verifiable software independent remote e-voting systems, 
 
 ## Conferences
+
+- **Jānis Erdmanis.** *PeaceFounder: evoting by pseudonym braiding.* EVoteID 2023. \
+
+  [[GitHub](https://github.com/PeaceFounder/PeaceFounder.jl) | [poster](../artefacts/EVoteID-2023-poster.pdf)]
 
 - **Jānis Erdmanis**. *Zero knowledge proofs of shuffle with ShuffleProofs.jl.* JuliaCon 2022. \\ 
   [[GitHub](https://github.com/PeaceFounder/ShuffleProofs.jl) | [video](https://www.youtube.com/watch?v=2P2FBP47b8c) | [slides](../artefacts/JuliaCon2022-ShuffleProofs.pdf)]
 
-- **Jānis Erdmanis**. *TaskMaster.jl: How to not lose a mind by paralelizing a feedback loop?* JuliaCon 2020. \\
+- **Jānis Erdmanis**. *TaskMaster.jl: How to not lose a mind by parallelising a feedback loop?* JuliaCon 2020. \\
   [[GitHub](https://github.com/JanisErdmanis/TaskMaster.jl) | [slides](../artefacts/JuliaCon2020-TaskMaster.pdf) | [docs](https://docs.juliahub.com/TaskMaster/TZzMM/0.1.0/)]
 
-- **Jānis Erdmanis**, Árpád Lukács, Yuli V. Nazarov. *Soft constrained topological transition.* The Capri Spring School on Transport in Nanostructures 2019. (Created in response of organizer's challenge to design a poster without text). 
+- **Jānis Erdmanis**, Árpád Lukács, Yuli V. Nazarov. *Soft constrained topological transition.* The Capri Spring School on Transport in Nanostructures 2019. (Created in response to the organiser's challenge to design a poster without text). 
   [[poster](../artefacts/Capri-soft-top-transition-poster.pdf)]
 
 ## Publications
