@@ -66,7 +66,7 @@ CV
 
 - **Jānis Erdmanis.** *PeaceFounder: evoting by pseudonym braiding.* EVoteID 2023. \
 
-  [[GitHub](https://github.com/PeaceFounder/PeaceFounder.jl) | [poster](../artefacts/EVoteID-2023-poster.pdf)]
+  [[GitHub](https://github.com/PeaceFounder/PeaceFounder.jl) | [poster](../artefacts/EVOTEID-2023-poster.pdf)]
 
 - **Jānis Erdmanis**. *Zero knowledge proofs of shuffle with ShuffleProofs.jl.* JuliaCon 2022. \\ 
   [[GitHub](https://github.com/PeaceFounder/ShuffleProofs.jl) | [video](https://www.youtube.com/watch?v=2P2FBP47b8c) | [slides](../artefacts/JuliaCon2022-ShuffleProofs.pdf)]
