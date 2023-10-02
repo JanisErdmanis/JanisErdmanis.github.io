@@ -31,7 +31,7 @@
     <![CDATA[  I used to be a Python advocate as having an interpreter, meaningful error messages, docstrings, and easy library installation made the scope of what I could build expand tremendously. But in 2015, the Cython, Numba or C interop story became unbearable for my MSc thesis project, and I made a plunge into Julia, and I never looked back. As saying says, you come to Julia for performance and stay there multiple dispatch, type system, REPL, Pkg and other neat things.  ]]>
   </description>  
     
-  <pubDate>Thu, 14 Sep 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Mon, 02 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -50,7 +50,7 @@
     <![CDATA[  In my master&#39;s project, I investigated the behaviour of magnetic fluid droplets formed through induced phase separation under varying magnetic fields. When subjected to fast-rotating magnetic fields of different intensities, these droplets exhibit intricate shapes such as oblate, three-axial, and starfish. The project aimed to determine whether a simple magnetic drop model could explain this complex behaviour under strong magnetic fields, where equilibrium arises from the interplay between scalar surface tension and linear magnetic force.  ]]>
   </description>  
     
-  <pubDate>Thu, 14 Sep 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Mon, 02 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -69,7 +69,7 @@
     <![CDATA[  Like many, I serve my website with GitHub Pages, greatly reducing the burden. I don&#39;t need to maintain a server, pay a subscription fee or update certificates every six months, and I can focus on the content. However, now and then, technologies change, and I started to look at my website as a burden to keep it updated and publish new blog posts.  ]]>
   </description>  
     
-  <pubDate>Thu, 14 Sep 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Mon, 02 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -88,7 +88,7 @@
     <![CDATA[  A time comes when computation is too expensive to run. If you are lucky, you can adjust the parameters of the numerical method or find a better one. If that is not the case, you are now looking at what the phrase parallel computing promises. Often the numerical tasks can be reduced to actor-model, meaning that there is a single master giving orders to the computing slaves. Most programming languages give many tools for these capabilities; however, the way and complexity can alienate us from using them. I believe this is another strength of Julia which shows us a better and more elegant way: this blog post.  ]]>
   </description>  
     
-  <pubDate>Thu, 14 Sep 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Mon, 02 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>

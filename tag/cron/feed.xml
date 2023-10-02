@@ -31,7 +31,7 @@
     <![CDATA[  Dropbox offers a great alternative to hosting your own SAMBA server and provides a stable and user-friendly experience, but the space limitations without a subscription plan and being into vendor lock-in led me to the search for alternatives. Eventually, I found hope in the BitTorrent Sync technology, which allows limitless storage and fast data sharing without relying on cloud storage. Here I show my setup with Raspberries using BitTorrent Sync and how I have configured it with an RClone cron job to synchronise with the cloud.  ]]>
   </description>  
     
-  <pubDate>Thu, 14 Sep 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Mon, 02 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
