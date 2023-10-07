@@ -31,7 +31,7 @@
     <![CDATA[  About six months ago, I came into difficulties while making a presentation with LibreOffice and started exploring alternatives like LaTeX Beamer and ipe. However, due to some bugs and limitations, I eventually turned to Inkscape, the best vector graphics editor on Linux, widely used by physicists for figure editing. A Sozi plugin allows to create a single-page poster-like layout and specify regions for each slide, resembling a whiteboard to organise thoughts and ideas.  ]]>
   </description>  
     
-  <pubDate>Mon, 02 Oct 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -50,7 +50,7 @@
     <![CDATA[  The user faced usability issues with the Gmail web application, which led me to explore email client alternatives on Ubuntu like Geary and Nylas1, but those also had limitations and bugs. Eventually, I discovered mu4e in Emacs, which provided efficient and distraction-free email management with offline capabilities. However, I had to overcome various challenges to set up my almost perfect email system.  ]]>
   </description>  
     
-  <pubDate>Mon, 02 Oct 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -69,7 +69,7 @@
     <![CDATA[  Dropbox offers a great alternative to hosting your own SAMBA server and provides a stable and user-friendly experience, but the space limitations without a subscription plan and being into vendor lock-in led me to the search for alternatives. Eventually, I found hope in the BitTorrent Sync technology, which allows limitless storage and fast data sharing without relying on cloud storage. Here I show my setup with Raspberries using BitTorrent Sync and how I have configured it with an RClone cron job to synchronise with the cloud.  ]]>
   </description>  
     
-  <pubDate>Mon, 02 Oct 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -88,7 +88,7 @@
     <![CDATA[  A time comes when computation is too expensive to run. If you are lucky, you can adjust the parameters of the numerical method or find a better one. If that is not the case, you are now looking at what the phrase parallel computing promises. Often the numerical tasks can be reduced to actor-model, meaning that there is a single master giving orders to the computing slaves. Most programming languages give many tools for these capabilities; however, the way and complexity can alienate us from using them. I believe this is another strength of Julia which shows us a better and more elegant way: this blog post.  ]]>
   </description>  
     
-  <pubDate>Mon, 02 Oct 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
