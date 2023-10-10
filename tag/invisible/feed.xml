@@ -31,7 +31,7 @@
     <![CDATA[  There is a great difficulty in designing an electronic voting system that combines transparency, user verifiability, anonymity, and resistance against bribery. In response to this, I propose a decentralized scheme, utilizing a Github-like repository where a board of members with merge rights represents a virtual state.  ]]>
   </description>  
     
-  <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -50,7 +50,7 @@
     <![CDATA[  This web page is hosted with Github Pages from my GitHub repository for free. The tradeoff is that you can serve only static pages and content. This is where I and many others develop creative solutions since no one likes to write plain HTML. I use .org files for my journal and other note-taking things; thus, taking inspiration from others, I compile my org sources to static HTML with a single Elisp script.  ]]>
   </description>  
     
-  <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -69,7 +69,7 @@
     <![CDATA[  Inspired by Monero cryptocurrency&#39;s transparency and anonymity, I propose a decentralized voting scheme based on universal ring signatures. In this scheme, citizens would receive ID cards containing private keys for signing messages, and a central authority would manage public keys and messages for parties. While the idea offers potential benefits, I discuss challenges such as complex implementation, security concerns.  ]]>
   </description>  
     
-  <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -88,7 +88,7 @@
     <![CDATA[  A foundation for an electronic voting system could be established through a git-based repository, with contributors possessing merge rights functioning as a governing body. This body would ensure precise vote tallying and supervise the execution of approved proposals. In this context, I suggest an electronic voting system wherein a trusted party equitably distributes public keys to members, enabling them to cast their votes.  ]]>
   </description>  
     
-  <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -107,7 +107,7 @@
     <![CDATA[  Every time when I hear about upcoming elections, I imagine a future where I can vote from anywhere for officials who truly represent our state&#39;s interests. However, the trust issues inherent in conventional centralized or blockchain-based electronic voting systems quickly dampen this dream. Despite these challenges, I believe trust concerns can be overcome and have embarked on the intellectual challenge of designing a solution based on modern cryptographic algorithms.  ]]>
   </description>  
     
-  <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>

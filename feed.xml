@@ -31,7 +31,7 @@
     <![CDATA[  For two months this summer, I was part of the CERN summer student program. Upon arrival, my supervisor tasked me with exploring possibilities to capture or push the boundaries of one of the supersymmetry particles in the ATLAS experiment, following the major CERN breakthroughs. As there are also opportunities for you to apply this year I decided to share a little bit of my experience being there.  ]]>
   </description>  
     
-  <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -50,7 +50,7 @@
     <![CDATA[  About six months ago, I came into difficulties while making a presentation with LibreOffice and started exploring alternatives like LaTeX Beamer and ipe. However, due to some bugs and limitations, I eventually turned to Inkscape, the best vector graphics editor on Linux, widely used by physicists for figure editing. A Sozi plugin allows to create a single-page poster-like layout and specify regions for each slide, resembling a whiteboard to organise thoughts and ideas.  ]]>
   </description>  
     
-  <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -69,7 +69,7 @@
     <![CDATA[  I used to spend countless hours to make reading and note-taking experience better with the tools I had, a laptop and Kindle eink reader, but the efforts I was investing made me unsatisfied with the result. Perhaps I am easily disturbed by nuisances - eye irritation, unreadability, synchronisation, and convenience - which stood before my goals and started forming a goal itself. If only there would have been A4 sized e-reader on which one could write at that time. Meet ReMarkable&#33;  ]]>
   </description>  
     
-  <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -88,7 +88,7 @@
     <![CDATA[  The user faced usability issues with the Gmail web application, which led me to explore email client alternatives on Ubuntu like Geary and Nylas1, but those also had limitations and bugs. Eventually, I discovered mu4e in Emacs, which provided efficient and distraction-free email management with offline capabilities. However, I had to overcome various challenges to set up my almost perfect email system.  ]]>
   </description>  
     
-  <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -107,7 +107,7 @@
     <![CDATA[  There is a great difficulty in designing an electronic voting system that combines transparency, user verifiability, anonymity, and resistance against bribery. In response to this, I propose a decentralized scheme, utilizing a Github-like repository where a board of members with merge rights represents a virtual state.  ]]>
   </description>  
     
-  <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -126,7 +126,7 @@
     <![CDATA[  This web page is hosted with Github Pages from my GitHub repository for free. The tradeoff is that you can serve only static pages and content. This is where I and many others develop creative solutions since no one likes to write plain HTML. I use .org files for my journal and other note-taking things; thus, taking inspiration from others, I compile my org sources to static HTML with a single Elisp script.  ]]>
   </description>  
     
-  <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -145,7 +145,7 @@
     <![CDATA[  I used to be a Python advocate as having an interpreter, meaningful error messages, docstrings, and easy library installation made the scope of what I could build expand tremendously. But in 2015, the Cython, Numba or C interop story became unbearable for my MSc thesis project, and I made a plunge into Julia, and I never looked back. As saying says, you come to Julia for performance and stay there multiple dispatch, type system, REPL, Pkg and other neat things.  ]]>
   </description>  
     
-  <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -164,7 +164,7 @@
     <![CDATA[  Superconductors exhibit unique charge transport, leading to intriguing interface phenomena with normal metals. Electrons and holes form closed trajectories at specific energies, known as Andreev-bound states. It is possible to envision a situation where Andreev-bound states can cross in superconducting phase space, forming Weyl points. But what if the superconducting phases are not fixed and are subject to quantum fluctuations near those Weyl points?  ]]>
   </description>  
     
-  <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -183,7 +183,7 @@
     <![CDATA[  Inspired by Monero cryptocurrency&#39;s transparency and anonymity, I propose a decentralized voting scheme based on universal ring signatures. In this scheme, citizens would receive ID cards containing private keys for signing messages, and a central authority would manage public keys and messages for parties. While the idea offers potential benefits, I discuss challenges such as complex implementation, security concerns.  ]]>
   </description>  
     
-  <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -202,7 +202,7 @@
     <![CDATA[  It was a stressful but successful year. I published my first paper, concluding my scientific activities in Latvia, and with determination and support from peers, I entered the PhD program at TU Delft. In a completely unfamiliar environment, where I am compelled to develop myself further, aligning with my commitment for the upcoming year as well. Much more grounded than what I have achieved in the past year :&#41;.  ]]>
   </description>  
     
-  <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -221,7 +221,7 @@
     <![CDATA[  I remember that after the first month, I promised to make a blog post on my studies here every month. I admit I had different expectations, so being under constant change makes it hard to reflect on how I feel, perform, and what future I see. But now, when my first year had passed in the TU Delft, and I was required to submit my self-reflection for the Go/NoGo meeting, I made a conscious effort on where I stand. Over this time, I have had some unusual thoughts which might form an opinion and recipes posted on my webpage. But for now, about my part of TU Delft.  ]]>
   </description>  
     
-  <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -240,7 +240,7 @@
     <![CDATA[  In my master&#39;s project, I investigated the behaviour of magnetic fluid droplets formed through induced phase separation under varying magnetic fields. When subjected to fast-rotating magnetic fields of different intensities, these droplets exhibit intricate shapes such as oblate, three-axial, and starfish. The project aimed to determine whether a simple magnetic drop model could explain this complex behaviour under strong magnetic fields, where equilibrium arises from the interplay between scalar surface tension and linear magnetic force.  ]]>
   </description>  
     
-  <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -259,7 +259,7 @@
     <![CDATA[  I lost my interest in making things with Arduino due to an ugly Arduino ide, debugging frustrations and lack of easy options for deploying what I make. The Digisparck saved the day, and I made a regulator for my home heat exchanger.  ]]>
   </description>  
     
-  <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -278,7 +278,7 @@
     <![CDATA[  A foundation for an electronic voting system could be established through a git-based repository, with contributors possessing merge rights functioning as a governing body. This body would ensure precise vote tallying and supervise the execution of approved proposals. In this context, I suggest an electronic voting system wherein a trusted party equitably distributes public keys to members, enabling them to cast their votes.  ]]>
   </description>  
     
-  <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -297,7 +297,7 @@
     <![CDATA[  Dropbox offers a great alternative to hosting your own SAMBA server and provides a stable and user-friendly experience, but the space limitations without a subscription plan and being into vendor lock-in led me to the search for alternatives. Eventually, I found hope in the BitTorrent Sync technology, which allows limitless storage and fast data sharing without relying on cloud storage. Here I show my setup with Raspberries using BitTorrent Sync and how I have configured it with an RClone cron job to synchronise with the cloud.  ]]>
   </description>  
     
-  <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -316,7 +316,7 @@
     <![CDATA[  Every time when I hear about upcoming elections, I imagine a future where I can vote from anywhere for officials who truly represent our state&#39;s interests. However, the trust issues inherent in conventional centralized or blockchain-based electronic voting systems quickly dampen this dream. Despite these challenges, I believe trust concerns can be overcome and have embarked on the intellectual challenge of designing a solution based on modern cryptographic algorithms.  ]]>
   </description>  
     
-  <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -335,7 +335,7 @@
     <![CDATA[  At a nanoscale at cold sub kelvin temperatures and large magnetic fields, an electron for a few centimetres flows like photons on optical fiber coherently. This enables envisioning an electron interferometer experiment on a solid state device; thus, a question on preparing an electron quantum state becomes important. In my BSc thesis project, I derived and, using Python, computed the resulting state of an electron emitted from an electric field veil lowering one of its barriers.  ]]>
   </description>  
     
-  <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -354,7 +354,7 @@
     <![CDATA[  Like many, I serve my website with GitHub Pages, greatly reducing the burden. I don&#39;t need to maintain a server, pay a subscription fee or update certificates every six months, and I can focus on the content. However, now and then, technologies change, and I started to look at my website as a burden to keep it updated and publish new blog posts.  ]]>
   </description>  
     
-  <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -373,7 +373,7 @@
     <![CDATA[  A time comes when computation is too expensive to run. If you are lucky, you can adjust the parameters of the numerical method or find a better one. If that is not the case, you are now looking at what the phrase parallel computing promises. Often the numerical tasks can be reduced to actor-model, meaning that there is a single master giving orders to the computing slaves. Most programming languages give many tools for these capabilities; however, the way and complexity can alienate us from using them. I believe this is another strength of Julia which shows us a better and more elegant way: this blog post.  ]]>
   </description>  
     
-  <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>  
+  <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
