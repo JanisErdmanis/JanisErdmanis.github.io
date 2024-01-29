@@ -178,3 +178,12 @@ nav a, .logo a, .post-title a, .social a, .rightcolumn a, dt a {
     }
 
 }
+
+
+@media (prefers-color-scheme: dark) {
+    body {
+      height: 0px; /* fixes the background with dark reader */
+    }
+
+    /* Other dark mode specific styles */
+}

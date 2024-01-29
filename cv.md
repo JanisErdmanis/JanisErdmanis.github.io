@@ -24,9 +24,9 @@ CV
 ## Education
 
 - **2017 - 2021** PhD in "Quantum effects of superconducting phase" at TU Delft, NL
-- **2014 - 2016** MSc in Physics at the University of Latvia, LV
+- **2014 - 2016** MSc in Physics at University of Latvia, LV
 - **2015** Spring semester at Umeå University with ERASMUS, SWE
-- **2011 - 2014** BSc in Physics at the University of Latvia, LV
+- **2011 - 2014** BSc in Physics at University of Latvia, LV
 
 ## Awards
 
@@ -66,7 +66,7 @@ CV
 
 - **Jānis Erdmanis.** *PeaceFounder: evoting by pseudonym braiding.* EVoteID 2023. \
 
-  [[GitHub](https://github.com/PeaceFounder/PeaceFounder.jl) | [poster](../artefacts/EVOTEID-2023-poster.pdf) | [paper](../artefacts/EVOTEID-2023-paper.pdf)]
+  [[GitHub](https://github.com/PeaceFounder/PeaceFounder.jl) | [poster](../artefacts/EVOTEID-2023-poster.pdf) | [summary](../artefacts/EVOTEID-2023-paper.pdf)]
 
 - **Jānis Erdmanis**. *Zero knowledge proofs of shuffle with ShuffleProofs.jl.* JuliaCon 2022. \\ 
   [[GitHub](https://github.com/PeaceFounder/ShuffleProofs.jl) | [video](https://www.youtube.com/watch?v=2P2FBP47b8c) | [slides](../artefacts/JuliaCon2022-ShuffleProofs.pdf)]

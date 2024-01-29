@@ -18,7 +18,6 @@
 
 </div>
 
-
 <h1 style="text-align: center; padding: 2rem;">Projects I have worked on</h1>
 
 <main class="page-content">
@@ -26,11 +25,11 @@
     <div class="content">
       <h2 class="title">PeaceFounder</h2>
       <p class="copy">
-The goal of PeaceFounder is to explore the feasibility of a publically verifiable software-independent voting system where votes are signed in plaintext with braided pseudonyms. I propose using one mix at a time, dropping the usual ceremonial secret commitments and propose a bulletin board implementation using <b>Merkle tree</b> inclusion and consistency proofs to guarantee the immutability and persistence of the ballot box ledger just by having some honest clients which periodically download the proofs.
+PeaceFounder is a centralised E2E verifiable e-voting system that leverages pseudonym braiding and history trees. The immutability of the bulletin board is maintained replication-free with voter’s client devices by storing local consistency-proof chains. Meanwhile, pseudonym braiding done via an exponentiation mix before the vote allows anonymisation to be transactional with a single braider at a time. In contrast to existing E2E verifiable e-voting systems, it is much easier to deploy as the system is fully centralised, free from threshold decryption ceremonies, trusted setup phases and bulletin board replication. Furthermore, the body of votes is signed with braided pseudonyms, enabling unlimited ballot types.
       </p>
 
       <p class="copy">
-This is a full-stack project with a total of <b>15k lines of Julia</b> code. Following NIST specification, I have reimplemented cryptographic groups and signatures and reimplemented from a research paper a Verificatum compatible verifier and prover for <b>zero-knowledge proofs</b> of shuffle. The server's backend exposes <b>REST API</b> over <b>HTTP</b> using <b>JSON</b> for communication. The client is made with <b>QML</b> and bridged with the client's backend. 
+This is a full-stack project with a total of <b>15k lines of Julia</b> code. Following NIST specification, I have reimplemented cryptographic groups and signatures and from a research paper a Verificatum compatible verifier and prover for <b>zero-knowledge proofs</b> of shuffle. The server's backend exposes <b>REST API</b> over <b>HTTP</b> using <b>JSON</b> for communication. The client is made with <b>QML</b> and bridged with the client's backend. 
       </p>
       <div>
         <!-- <button class="btn">See a blog post</button> -->
@@ -45,8 +44,7 @@ This is a full-stack project with a total of <b>15k lines of Julia</b> code. Fol
     <div class="content">
       <h2 class="title">My PhD thesis</h2>
       <p class="copy">
-        My PhD thesis explores properties of superconducting nanostructures at cold tempertures in different settings with different manifestations of topology in their superconducting phase. In the result working with my supervisour and a postdoc I have published four peer reviewed papers and supervised one master student. Apart from doing Taylor expansions, setting up hamiltoninian, diagonalizing, simulating time evolution of a quantum system with Schrodingers equation or solving stochastic differential equations and using <b>PBS</b> cluster with 200 cores at one point are some of the things I did as a part of my PhD using <b>Julia</b>  
-
+        In my PhD thesis, I investigated the properties of superconducting nanostructures at low temperatures and their topological characteristics in different superconducting phases. This work, a collaborative effort with my supervisor and his postdoc, resulted in four peer-reviewed publications. Additionally, I supervised a master's student. My research involved a variety of technical skills, including performing Taylor expansions, setting up Hamiltonians, diagonalizing matrices, and simulating quantum systems using Schrödinger's equation and solving stochastic differential equations. A key aspect of my work was using a <b>PBS cluster</b> with 200 cores for complex simulations, all conducted using the <b>Julia</b> programming language.
       </p>
       <div>
         <a class="btn" href="https://pure.tudelft.nl/ws/portalfiles/portal/101818277/dissertation_Erdmanis.pdf" role="button">PhD Thesis</a>        
@@ -59,9 +57,8 @@ This is a full-stack project with a total of <b>15k lines of Julia</b> code. Fol
     <div class="content">
       <h2 class="title">Magnetic micro-droplet in rotating field</h2>
       <p class="copy">
-        A small magnetic droplet is suspended on a petry dish and a fast rotating magnetic field is turned on. An equilibrium of the magnetization force with a surface tension forms exhibiting rich range of shapes observed experimentally. To test the hypothesis I built a computer simulation in <b>Julia</b> and designed the numerical metdhod from scratch travesring all surface triangles to calculate surface force at every node to evolve the surface into equilibrium where I wraped <b>C++</b> ElTopo library to adaptivelly refine the surface mesh. <b>ssh</b> and <b>tmux</b> was indespensable to leave my simulations runing on my university's workstation for days.
+A tiny magnetic droplet is suspended on a petri dish, and a fast-rotating magnetic field is turned on. The droplets exhibited a rich range of equilibrium shapes observed experimentally. I built a computer simulation from scratch in <b>Julia</b> to test the hypothesis that the equilibrium is between magnetisation force and surface tension. In the process, I came up with an innovative method for calculating the magnetic field on the droplet surface, which was critical for the project’s success. I wrapped <b>C++</b> ElTopo library to refine the surface mesh adaptively. <b>ssh</b> and <b>tmux</b> were indispensable to leave my simulations running on my university's workstation for days.
       </p>
-
       <div>
         <a class="btn" href="/blog/research-mdrop" role="button">Blog</a>
         <a class="btn" href="https://arxiv.org/pdf/1703.03654" role="button">Paper</a>
@@ -72,7 +69,8 @@ This is a full-stack project with a total of <b>15k lines of Julia</b> code. Fol
   <div class="card">
     <div class="content">
       <h2 class="title">Electron on-demand emission</h2>
-      <p class="copy">At a nanoscale in Helium boiling temperatures and large magnetic fields an electron for few centimeters flows just like photons on optical fibers coherently. This enables to envision an electron interferometer experiment on a solid state device and thus question on the prepereations of a electron quantum state becomes important. In this project I derived and using <b>python</b> computed the reesulting state of an electron emitted from a electric field veil lowering one of it's barriers. 
+      <p class="copy">
+At a nanoscale in sub-kelvin temperatures and large magnetic fields, an electron for a few centimetres can flow coherently, just like photons on optical fibres. This enables us to envision an electron interferometer experiment on a solid-state device; thus, questions on the preparation of electron quantum state become essential. In this project, I derived and, using <b>python</b>, computed the resulting quantum state of an electron emitted from an electric field veil lowering one of its barriers. 
       </p>
       <div>
         <a class="btn" href="/blog/research-wigner" role="button">Blog</a>
