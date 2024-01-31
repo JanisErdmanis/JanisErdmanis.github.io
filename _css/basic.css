@@ -187,3 +187,10 @@ nav a, .logo a, .post-title a, .social a, .rightcolumn a, dt a {
 
     /* Other dark mode specific styles */
 }
+
+
+/* video centering */
+iframe {
+  display: block;
+  margin: 0 auto;
+}
