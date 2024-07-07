@@ -31,7 +31,7 @@
     <![CDATA[  It was a stressful but successful year. I published my first paper, concluding my scientific activities in Latvia, and with determination and support from peers, I entered the PhD program at TU Delft. In a completely unfamiliar environment, where I am compelled to develop myself further, aligning with my commitment for the upcoming year as well. Much more grounded than what I have achieved in the past year :&#41;.  ]]>
   </description>  
     
-  <pubDate>Wed, 31 Jan 2024 00:00:00 +0000</pubDate>  
+  <pubDate>Sun, 07 Jul 2024 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -50,7 +50,7 @@
     <![CDATA[  I remember that after the first month, I promised to make a blog post on my studies here every month. I admit I had different expectations, so being under constant change makes it hard to reflect on how I feel, perform, and what future I see. But now, when my first year had passed in the TU Delft, and I was required to submit my self-reflection for the Go/NoGo meeting, I made a conscious effort on where I stand. Over this time, I have had some unusual thoughts which might form an opinion and recipes posted on my webpage. But for now, about my part of TU Delft.  ]]>
   </description>  
     
-  <pubDate>Wed, 31 Jan 2024 00:00:00 +0000</pubDate>  
+  <pubDate>Sun, 07 Jul 2024 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -69,7 +69,7 @@
     <![CDATA[  At a nanoscale at cold sub kelvin temperatures and large magnetic fields, an electron for a few centimetres flows like photons on optical fiber coherently. This enables envisioning an electron interferometer experiment on a solid state device; thus, a question on preparing an electron quantum state becomes important. In my BSc thesis project, I derived and, using Python, computed the resulting state of an electron emitted from an electric field veil lowering one of its barriers.  ]]>
   </description>  
     
-  <pubDate>Wed, 31 Jan 2024 00:00:00 +0000</pubDate>  
+  <pubDate>Sun, 07 Jul 2024 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -88,7 +88,7 @@
     <![CDATA[  A time comes when computation is too expensive to run. If you are lucky, you can adjust the parameters of the numerical method or find a better one. If that is not the case, you are now looking at what the phrase parallel computing promises. Often the numerical tasks can be reduced to actor-model, meaning that there is a single master giving orders to the computing slaves. Most programming languages give many tools for these capabilities; however, the way and complexity can alienate us from using them. I believe this is another strength of Julia which shows us a better and more elegant way: this blog post.  ]]>
   </description>  
     
-  <pubDate>Wed, 31 Jan 2024 00:00:00 +0000</pubDate>  
+  <pubDate>Sun, 07 Jul 2024 00:00:00 +0000</pubDate>  
   
   
   <atom:author>

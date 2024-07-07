@@ -50,7 +50,7 @@ smtpserver.quit()</code></pre>
     <span class=hljs-keyword >if</span> [ <span class=hljs-string >&quot;<span class=hljs-variable >$_IP</span>&quot;</span> ]; <span class=hljs-keyword >then</span>
       <span class=hljs-built_in >printf</span> <span class=hljs-string >&quot;My IP address is %s\n&quot;</span> <span class=hljs-string >&quot;<span class=hljs-variable >$_IP</span>&quot;</span>
       <span class=hljs-built_in >sleep</span> 30
-      sudo -u pi -i mailip
+      <span class=hljs-built_in >sudo</span> -u pi -i mailip
     <span class=hljs-keyword >fi</span></code></pre>
 <p>That will execute the script after all other Linux scripts are done. Sometimes I did not receive emails; thus, one needs to set up raspberry to wait for the network until the boot is finished, which is available under <code>raspi-config</code>. Another option is to execute the script when a network connection is established. That can be accomplished by putting the script in <code>/etc/network/if-up.d/mailip</code>. However, that did not work for me.</p>
 <h2 id=configuration_of_bittorrent_sync ><a href="#configuration_of_bittorrent_sync" class=header-anchor >Configuration of bittorrent sync</a></h2>
@@ -58,7 +58,7 @@ smtpserver.quit()</code></pre>
 <p>The arm archive downloaded in the link needs to be unarchived and placed and synced to the raspberry pi, which can be done with a command:</p>
 <pre><code class="bash hljs">rsync btsync pi@[ip pi]:~/bin/</code></pre>
 <p>It also needs to be started on boot which can be done by placing a line before <code>exit 0</code> in <code>/etc/rc.local</code>:</p>
-<pre><code class="bash hljs">sudo -u pi -i <span class=hljs-built_in >nohup</span> btsync --webui.listen 0.0.0.0:8888 &amp;</code></pre>
+<pre><code class="bash hljs"><span class=hljs-built_in >sudo</span> -u pi -i <span class=hljs-built_in >nohup</span> btsync --webui.listen 0.0.0.0:8888 &amp;</code></pre>
 <p>To log in to the btsync in the browser, the following address must be used:</p>
 <pre><code class="bash hljs">[ip of pi]:8888/gui/</code></pre>
 <p>In there, you can either create or attach yourself to the shares. And that&#39;s it. You may now restart the device, and it will still work as a cloud for you.</p>
@@ -71,7 +71,7 @@ smtpserver.quit()</code></pre>
 <span class=hljs-built_in >mkdir</span> -p ~/Cloud/Dropbox.ro
 <span class=hljs-built_in >mkdir</span> -p ~/BtSync/Cloud/Dropbox</code></pre>
 <p>Then with <code>unionfs</code>, I bind them together into <code>/etc/rc.local</code> &#40;again before exit 0&#41;</p>
-<pre><code class="bash hljs">sudo -u pi -i <span class=hljs-built_in >nohup</span> unionfs-fuse -o cow Cloud/Dropbox.diff=RW:Cloud/Dropbox.ro=RO BtSync/Cloud/Dropbox &amp;</code></pre>
+<pre><code class="bash hljs"><span class=hljs-built_in >sudo</span> -u pi -i <span class=hljs-built_in >nohup</span> unionfs-fuse -o cow Cloud/Dropbox.diff=RW:Cloud/Dropbox.ro=RO BtSync/Cloud/Dropbox &amp;</code></pre>
 <p>where union-fuse must be installed with <code>sudo apt-get install union-fuse</code>. This command now will merge not intended to be written folder <code>Dropbox.ro</code> with differences <code>Dropbox.diff</code> to form an ordinary Dropbox folder, which is synchronised over the network with <code>btsync</code>. What remains to be done is to push changes from <code>Dropbox.diff</code> to the cloud and synchronise <code>Dropbox.ro</code> with it. That is exactly what I am doing.</p>
 <p>To use <code>rclone</code> on pi I downloaded the <a href="https://rclone.org/downloads/">RClone binary</a> for arm devices and put it in <code>~/bin</code> on pi:</p>
 <pre><code class="bash hljs">rsync rclone pi@[ip of pi]:~/bin/</code></pre>
@@ -104,7 +104,7 @@ rclone <span class=hljs-built_in >sync</span> <span class=hljs-variable >$Remote
 <pre><code class="plaintext hljs">* * * * * sudo -u pi -i flock -n Dropbox.lock rclone-bisync Dropbox</code></pre>
 <p>which ensures that synchronisation is being started every minute if it is not already running. But for this to be effective system must log in to the user; thus, I set up autologin with <code>raspi-config</code>. Another option is to edit the system&#39;s crontab with <code>sudo crontab -e,</code> which would not need autologin.</p>
 <div class=page-foot >
-    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> Janis Erdmanis. Last modified: January 31, 2024.
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> Janis Erdmanis. Last modified: July 07, 2024.
     Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
 </div>
 </div>
