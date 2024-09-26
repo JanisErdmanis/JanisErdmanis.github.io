@@ -49,7 +49,8 @@ CV
 
 ## Open Source Projects
 
-- PeaceFounder: evoting by pseudonym braiding. \\ 
+- AppBundler.jl: Bundle your Julia GUI Application. \\ [[GitHub](https://github.com/PeaceFounder/AppBundler.jl)]
+- PeaceFounder: centralised E2E verifiable evoting via pseudonym braiding and history trees. \\ 
   [[GitHub](https://github.com/PeaceFounder) | [docs](https://peacefounder.org/PeaceFounder.jl/dev/) | [website](https://peacefounder.org)]
 - LaplaceBIE.jl: A boundary integral solver for electrostatics and magnetostatics. \\ 
   [[GitHub](https://github.com/JanisErdmanis/LaplaceBIE.jl) | [docs](https://docs.juliahub.com/LaplaceBIE/CDPCh/0.1.0/)]
@@ -57,42 +58,49 @@ CV
 ## Personal interests
 
 - **Sports:** swimming, running, cycling, skate skiing and snowboarding
-- Software design and technologies for long-term maintainability and abstraction for modularity
 - **Reading:** fiction, psychology, political economics, philosophy and anthropology
 - **DIY:** solar panel installation, electrical wiring, open source surveillance camera systems, woodworking
 - **Cryptography and Security:** public key cryptography, zero-knowledge proofs, blind signatures, authentification protocols and digital identity, bulletin boards, publically verifiable software independent remote e-voting systems, 
 
 ## Conferences
 
-- **Jānis Erdmanis.** *PeaceFounder: evoting by pseudonym braiding.* EVoteID 2023. \
+- **Jānis Erdmanis**. *Unveiling Full Stack Development with PeaceFounder.* JuliaCon 2024. \\ 
+  [[GitHub](https://github.com/PeaceFounder/PeaceFounder.jl) | [video](https://www.youtube.com/watch?v=--agWtyxfJo) | [slides](../artifacts/JuliaCon2024-PeaceFounder.pdf)]
 
-  [[GitHub](https://github.com/PeaceFounder/PeaceFounder.jl) | [poster](../artefacts/EVOTEID-2023-poster.pdf) | [summary](../artefacts/EVOTEID-2023-paper.pdf)]
+- **Jānis Erdmanis**. *Bundle your Julia GUI Application.* JuliaCon 2024. \\ 
+  [[GitHub](https://github.com/PeaceFounder/AppBundler.jl) | [video](https://www.youtube.com/watch?v=wICPVpDa7aw) | [slides](../artifacts/JuliaCon2024-AppBundler.pdf)]
+
+- **Jānis Erdmanis.** *PeaceFounder: evoting by pseudonym braiding.* EVoteID 2023. \
+  [[GitHub](https://github.com/PeaceFounder/PeaceFounder.jl) | [poster](../artifacts/EVOTEID-2023-poster.pdf) | [summary](../artifacts/EVOTEID-2023-paper.pdf)]
 
 - **Jānis Erdmanis**. *Zero knowledge proofs of shuffle with ShuffleProofs.jl.* JuliaCon 2022. \\ 
-  [[GitHub](https://github.com/PeaceFounder/ShuffleProofs.jl) | [video](https://www.youtube.com/watch?v=2P2FBP47b8c) | [slides](../artefacts/JuliaCon2022-ShuffleProofs.pdf)]
+  [[GitHub](https://github.com/PeaceFounder/ShuffleProofs.jl) | [video](https://www.youtube.com/watch?v=2P2FBP47b8c) | [slides](../artifacts/JuliaCon2022-ShuffleProofs.pdf)]
 
 - **Jānis Erdmanis**. *TaskMaster.jl: How to not lose a mind by parallelising a feedback loop?* JuliaCon 2020. \\
-  [[GitHub](https://github.com/JanisErdmanis/TaskMaster.jl) | [slides](../artefacts/JuliaCon2020-TaskMaster.pdf) | [docs](https://docs.juliahub.com/TaskMaster/TZzMM/0.1.0/)]
+  [[GitHub](https://github.com/JanisErdmanis/TaskMaster.jl) | [slides](../artifacts/JuliaCon2020-TaskMaster.pdf) | [docs](https://docs.juliahub.com/TaskMaster/TZzMM/0.1.0/)]
 
 - **Jānis Erdmanis**, Árpád Lukács, Yuli V. Nazarov. *Soft constrained topological transition.* The Capri Spring School on Transport in Nanostructures 2019. (Created in response to the organiser's challenge to design a poster without text). 
-  [[poster](../artefacts/Capri-soft-top-transition-poster.pdf)]
+  [[poster](../artifacts/Capri-soft-top-transition-poster.pdf)]
 
 ## Publications
 
+- **Jānis Erdmanis**. *PeaceFounder: centralised E2E verifiable evoting via pseudonym braiding and history trees*. Cryptology ePrint Archive, 2024 (Preprint). \\ 
+  [[pdf](https://eprint.iacr.org/2024/1040) | [code](https://github.com/PeaceFounder/PeaceFounder.jl)]
+
 - **Jānis Erdmanis**, Yuli Nazarov. *Synchronization of Bloch oscillations by gate voltage modulation*. Physical Review B, 2022. \\
-  [[DOI](https://doi.org/10.1103/physrevb.106.235406) | [pdf](https://arxiv.org/pdf/2107.10565) | [artefact](https://doi.org/10.5281/zenodo.5120790) | [slides](../artefacts/Bloch-slides.pdf)]
+  [[DOI](https://doi.org/10.1103/physrevb.106.235406) | [pdf](https://arxiv.org/pdf/2107.10565) | [code](https://doi.org/10.5281/zenodo.5120790) | [slides](../artifacts/Bloch-slides.pdf)]
 
 - **Jānis Erdmanis**, Árpád Lukács, Yuli V. Nazarov. *Drastic effect of weak interaction near special points in semiclassical multiterminal superconducting nanostructures.* Physical Review B, 2022. \\
-  [[DOI](https://doi.org/10.1103/physrevb.106.125422) | [pdf](https://arxiv.org/pdf/2107.14105) | [slides](../artefacts/soft-top-transition.pdf) | [poster](../artefacts/Capri-soft-top-transition-poster.pdf)]
+  [[DOI](https://doi.org/10.1103/physrevb.106.125422) | [pdf](https://arxiv.org/pdf/2107.14105) | [slides](../artifacts/soft-top-transition.pdf) | [poster](../artifacts/Capri-soft-top-transition-poster.pdf)]
 
 - Victor Boogers, **Jānis Erdmanis**, Yuli V. Nazarov. *Holonomic quantum manipulation in the Weyl disk.* Physical Review B, 2022. \\
-  [[DOI](https://doi.org/10.1103/physrevb.105.235437) | [pdf](https://arxiv.org/pdf/2107.04814) | [artefact](https://doi.org/10.5281/zenodo.5089041)]
+  [[DOI](https://doi.org/10.1103/physrevb.105.235437) | [pdf](https://arxiv.org/pdf/2107.04814) | [code](https://doi.org/10.5281/zenodo.5089041)]
 
 - **Jānis Erdmanis**. *Quantum effects of superconducting phase.* PhD thesis at TU Delft, NL, 2021. \\
   [[DOI](https://doi.org/10.4233/uuid:24872ead-0ee2-4854-9728-fe04f5957ca2) | [pdf](https://repository.tudelft.nl/islandora/object/uuid:24872ead-0ee2-4854-9728-fe04f5957ca2/datastream/OBJ/download)]
 
 - **Jānis Erdmanis**, Árpád Lukács, Yuli V. Nazarov. *Weyl disks: Theoretical prediction.* Physical Review B, 2018. \\
-  [[DOI](https://doi.org/10.1103/physrevb.98.241105) | [pdf](https://arxiv.org/pdf/1805.03678) | [artefact](https://doi.org/10.5281/zenodo.4068509) | [poster](../artefacts/Veldhoven2019-weyl-disks.pdf)]
+  [[DOI](https://doi.org/10.1103/physrevb.98.241105) | [pdf](https://arxiv.org/pdf/1805.03678) | [code](https://doi.org/10.5281/zenodo.4068509) | [poster](../artifacts/Veldhoven2019-weyl-disks.pdf)]
 
 - **J. Erdmanis**, G. Kitenbergs, R. Perzynski, A. Cēbers. *Magnetic micro-droplet in rotating field: numerical simulation and comparison with experiment.* Journal of Fluid Mechanics, 2017. \\
-  [[DOI](https://doi.org/10.1017/jfm.2017.238) | [pdf](https://arxiv.org/pdf/1703.03654) | [artefact](https://doi.org/10.5281/zenodo.168177) | [poster](/artefacts/Conference-2017-feb.svg)]
+  [[DOI](https://doi.org/10.1017/jfm.2017.238) | [pdf](https://arxiv.org/pdf/1703.03654) | [code](https://doi.org/10.5281/zenodo.168177) | [poster](/artifacts/Conference-2017-feb.svg)]

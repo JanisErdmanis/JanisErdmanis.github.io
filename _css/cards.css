@@ -129,17 +129,17 @@ h1 {
   transition: transform calc(var(--d) * 2) var(--e);
 }
 .card:nth-child(1):before {
-    background-image: url(../artefacts/peacefounder.png);
+    background-image: url(../artifacts/peacefounder.png);
 }
 .card:nth-child(2):before {
-    background-image: url(../artefacts/phd.png);
+    background-image: url(../artifacts/phd.png);
 }
 .card:nth-child(3):before {
-    background-image: url(../artefacts/star.png);
+    background-image: url(../artifacts/star.png);
 
 }
 .card:nth-child(4):before {
-    background-image: url(../artefacts/optimal-pulse.png);
+    background-image: url(../artifacts/optimal-pulse.png);
 }
 
 
@@ -233,11 +233,11 @@ a[role=button]:hover {
 }
 
 .card:nth-child(3):hover:before {
-    background-image: url(../artefacts/star-out.gif);
+    background-image: url(../artifacts/star-out.gif);
 }
 
 .card:nth-child(4):hover:before {
-    background-image: url(../artefacts/optimal-pulse.gif);
+    background-image: url(../artifacts/optimal-pulse.gif);
 }
 
 

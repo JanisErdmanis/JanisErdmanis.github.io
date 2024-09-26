@@ -1,5 +1,5 @@
-using Infiltrator
 using Franklin
+using Franklin: @delay
 using Dates
 
 struct PostInfo
@@ -22,8 +22,6 @@ function hfun_m1fill(vname)
   return pagevar("index", var)
 end
 
-
-# 
 function item2html(info::PostInfo)
     
     (; title, link, description, date, word_count) = info
@@ -49,7 +47,6 @@ function blog_link(file)
         return file[1:end-3] # removing md extension
     end
 end
-
 
 @delay function get_item_metadata(path)
 
@@ -79,12 +76,12 @@ function get_blog_items()
 
     for i in blog_items
         path = joinpath("blog", i)
-        try
+        #try
             data = get_item_metadata(path)
             push!(metadata, data)
-        catch e
-            @warn "A file with $path is discarded due to errors. $e"
-        end
+        #catch e
+            #@warn "A file with $path is discarded due to errors. $e"
+        #end
 
     end
 
@@ -138,7 +135,6 @@ end
     end
 end
 
-
 @delay function hfun_blog_tagged(vname)
 
     tag = vname[1]
@@ -160,7 +156,6 @@ end
 
     end
 end
-
 
 @delay function hfun_blog_all()
 
