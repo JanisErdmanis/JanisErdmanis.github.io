@@ -49,13 +49,13 @@ CV
 
 ## Open Source Projects
 
-- AppBundler.jl: Bundle your Julia GUI Application. \\ [[GitHub](https://github.com/PeaceFounder/AppBundler.jl) | [video](https://www.youtube.com/watch?v=--agWtyxfJo) | [announcement](https://discourse.julialang.org/t/ann-appbundler-jl-bundle-your-julia-gui-application/106971)]
-- CryptoGroups.jl: versatile and type-safe implementation of cryptographic groups. \\ [[GitHub](https://github.com/PeaceFounder/CryptoGroups.jl) | [docs](https://peacefounder.org/CryptoGroups.jl/dev/) | [announcement](https://discourse.julialang.org/t/ann-cryptogroups-jl-a-versatile-type-safe-cryptographic-group-library/119200)]
+- AppBundler.jl: Bundle your Julia GUI Application. \\ [[GitHub](https://github.com/PeaceFounder/AppBundler.jl) | [video](https://www.youtube.com/watch?v=--agWtyxfJo) | [news](https://discourse.julialang.org/t/ann-appbundler-jl-bundle-your-julia-gui-application/106971)]
+- CryptoGroups.jl: versatile and type-safe implementation of cryptographic groups. \\ [[GitHub](https://github.com/PeaceFounder/CryptoGroups.jl) | [docs](https://peacefounder.org/CryptoGroups.jl/dev/) | [news](https://discourse.julialang.org/t/ann-cryptogroups-jl-a-versatile-type-safe-cryptographic-group-library/119200)]
 - ShuffleProofs.jl: Verificatum compatible verifier and prover for NIZK proofs of shuffle. \\ [[GitHub](https://github.com/PeaceFounder/ShuffleProofs.jl) | [video](https://www.youtube.com/watch?v=2P2FBP47b8c)]
 - PeaceFounder: centralised E2E verifiable evoting via pseudonym braiding and history trees. \\ 
   [[GitHub](https://github.com/PeaceFounder) | [docs](https://peacefounder.org/PeaceFounder.jl/dev/) | [website](https://peacefounder.org) | [preprint](https://eprint.iacr.org/2024/1040) | [video](https://www.youtube.com/watch?v=--agWtyxfJo)]
 - LaplaceBIE.jl: A boundary integral solver for electrostatics and magnetostatics. \\ 
-  [[GitHub](https://github.com/JanisErdmanis/LaplaceBIE.jl) | [docs](https://docs.juliahub.com/LaplaceBIE/CDPCh/0.1.0/) | [announcement](https://discourse.julialang.org/t/ann-surfacetopology-jl-laplacebie-jl-and-eltopo-jl/28233)]
+  [[GitHub](https://github.com/JanisErdmanis/LaplaceBIE.jl) | [docs](https://docs.juliahub.com/LaplaceBIE/CDPCh/0.1.0/) | [news](https://discourse.julialang.org/t/ann-surfacetopology-jl-laplacebie-jl-and-eltopo-jl/28233)]
 
 ## Personal interests
 
