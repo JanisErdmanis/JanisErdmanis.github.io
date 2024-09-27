@@ -9,6 +9,11 @@
   <link rel="stylesheet" href="/css/basic.css">
   <link rel="icon" href="/assets/favicon.png">
   {{isdef title}} <title>{{fill title}}</title>  {{end}}
+
+  <!-- OpenGraph meta tags -->
+  <meta property="og:title" content="{{fill title}}" />
+  <meta property="og:description" content="{{fill rss}}" />
+
 </head>
 <body>
   {{insert header.html}}
