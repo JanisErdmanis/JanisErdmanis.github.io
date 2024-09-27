@@ -14,6 +14,12 @@
   <meta property="og:title" content="{{fill title}}" />
   <meta property="og:description" content="{{fill rss}}" />
 
+  {{isdef image}}
+    <meta property="og:image" content="{{fill image}}" />
+  {{else}}
+    <meta property="og:image" content="/artifacts/profile.jpg" />
+  {{end}}
+
 </head>
 <body>
   {{insert header.html}}

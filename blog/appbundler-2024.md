@@ -1,11 +1,13 @@
 +++
 date = "2024-09-28"
 rss = "This reflection on the AppBundler project examines its role in simplifying GUI application deployment for Julia, addressing cross-platform challenges and integration with modern sandboxed formats. It discusses recent progress and ongoing challenges, including toolchain maintenance and sandboxing issues. The post concludes by exploring future opportunities to enhance AppBundler's functionality, aiming to make Julia more accessible for desktop application development"
+image = "https://raw.githubusercontent.com/PeaceFounder/AppBundler.jl/refs/heads/main/docs/assets/appbundler.png"
 tags = ["appbundler"]
 +++
 
-
 # Reflecting On the Future of AppBundler
+
+![](https://raw.githubusercontent.com/PeaceFounder/AppBundler.jl/refs/heads/main/docs/assets/appbundler.png)
 
 Deployment of GUI applications has always been a hassle for the developers. Challenges like development complexity for cross-platform targets, distribution, user adoption barriers, and maintainability have reached the point where web page has become a de facto distribution format for any new application development. However, web applications are often not an optimal solution when performance, hardware interfacing, offline functionality and custom visualisations are of concern, which describes requirements for many scientific/industrial software. 
 
