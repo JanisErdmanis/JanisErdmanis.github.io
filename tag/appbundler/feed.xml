@@ -31,7 +31,7 @@
     <![CDATA[  This reflection on the AppBundler project examines its role in simplifying GUI application deployment for Julia, addressing cross-platform challenges and integration with modern sandboxed formats. It discusses recent progress and ongoing challenges, including toolchain maintenance and sandboxing issues. The post concludes by exploring future opportunities to enhance AppBundler&#39;s functionality, aiming to make Julia more accessible for desktop application development  ]]>
   </description>  
     
-  <pubDate>Fri, 27 Sep 2024 00:00:00 +0000</pubDate>  
+  <pubDate>Sat, 28 Sep 2024 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
