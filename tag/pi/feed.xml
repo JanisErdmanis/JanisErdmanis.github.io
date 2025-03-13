@@ -23,12 +23,12 @@
 
 <item>
   <title>
-    <![CDATA[  From a cloud to a personalized edge   ]]>
+    <![CDATA[  NVR with PI that makes sense  ]]>
   </title>
-  <link> https://janiserdmanis.org/blog/cloud-edge/index.html </link>
-  <guid> https://janiserdmanis.org/blog/cloud-edge/index.html </guid>
+  <link> https://janiserdmanis.org/blog/nvr/index.html </link>
+  <guid> https://janiserdmanis.org/blog/nvr/index.html </guid>
   <description>
-    <![CDATA[  Dropbox offers a great alternative to hosting your own SAMBA server and provides a stable and user-friendly experience, but the space limitations without a subscription plan and being into vendor lock-in led me to the search for alternatives. Eventually, I found hope in the BitTorrent Sync technology, which allows limitless storage and fast data sharing without relying on cloud storage. Here I show my setup with Raspberries using BitTorrent Sync and how I have configured it with an RClone cron job to synchronise with the cloud.  ]]>
+    <![CDATA[  In this technical guide, I document my process of building a reliable NVR system using a LePotato board, inexpensive IP cameras, and Frigate software. The setup involves configuring headless SSH access to the board using arch-chroot, establishing static IP addresses for cameras outside the DHCP range, testing RTSP streams via VLC, and deploying Frigate through Podman with hardware acceleration.  ]]>
   </description>  
     
   <pubDate>Thu, 13 Mar 2025 00:00:00 +0000</pubDate>  
