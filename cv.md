@@ -16,6 +16,12 @@ CV
 
 ## Work Experience
 
+- **2025 - Current** Open Source AppBundler project - Sole Developer [funded via NLNET](https://nlnet.nl/project/Julia-AppBundler/)
+
+    - Developing tooling to create native, self-contained installers for Julia GUI applications
+    - Independently designed, implemented, and managed all aspects of the project
+    - Successfully secured competitive funding through NLNET Foundation
+
 - **2017 - 2021** Quantum effects of superconducting phase, TU Delft, NL (s. Yuli Nazarov)
 - **2016** Summer internship at SUSY data analysis group, CERN, CH (s. Simone Amoroso)
 - **2015 - 2017** Magnetic micro-droplet in a rotating field, University of Latvia, LV (s. Andrejs Cebers)
@@ -60,8 +66,8 @@ CV
 ## Personal interests
 
 - **Sports:** swimming, running, cycling, skate skiing and snowboarding
-- **Reading:** fiction, psychology, political economics, philosophy and anthropology
-- **DIY:** solar panel installation, electrical wiring, open source surveillance camera systems, woodworking
+- **Reading:** fiction, political economics, philosophy and anthropology
+- **DIY:** electrical wiring, solar, open source deployments, woodworking
 - **Cryptography and Security:** public key cryptography, zero-knowledge proofs, blind signatures, authentification protocols and digital identity, bulletin boards, E2E verifiable e-voting systems
 
 ## Conferences
