@@ -72,6 +72,9 @@ CV
 
 ## Conferences
 
+- **Jānis Erdmanis.** *Unconditional Individual Verifiability with Receipt Freeness via Post-Cast Isolation.* EVoteID 2025. \
+  [[poster](../artifacts/EVOTEID-2025-poster.pdf) | [preprint](https://eprint.iacr.org/2025/1186)]
+
 - **Jānis Erdmanis**. *Unveiling Full Stack Development with PeaceFounder.* JuliaCon 2024. \\ 
   [[GitHub](https://github.com/PeaceFounder/PeaceFounder.jl) | [video](https://www.youtube.com/watch?v=--agWtyxfJo) | [slides](../artifacts/JuliaCon2024-PeaceFounder.pdf)]
 
