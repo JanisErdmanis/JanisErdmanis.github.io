@@ -77,7 +77,7 @@ Verifiability via Trapdoor Chains.** EVoteID 2026. \\
   [[paper](../artifacts/EVOTEID-2026-paper.pdf)]
 
 - **Jānis Erdmanis**. *Jumbo Julia distribution.* JuliaCon 2026. \\ 
-  [[GitHub](https://github.com/JanisErdmanis/Jumbo) | [slides](../artifacts/JuliaCon2026-Jumbo/)
+  [[GitHub](https://github.com/JanisErdmanis/Jumbo) | [slides](../artifacts/JuliaCon2026-Jumbo/)]
 
 - **Jānis Erdmanis**. *AppBundler 1.0 - Bundle your Julia application and beyond.* JuliaCon 2026. \\ 
   [[GitHub](https://github.com/PeaceFounder/AppBundler.jl) | [slides](../artifacts/JuliaCon2026-AppBundler)]
