@@ -72,7 +72,7 @@ CV
 
 ## Conferences
 
-- **Jānis Erdmanis. **Deniable Vote Updating with Eligibility
+- **Jānis Erdmanis**. Deniable Vote Updating with Eligibility
 Verifiability via Trapdoor Chains.** EVoteID 2026. \\
   [[paper](../artifacts/EVOTEID-2026-paper.pdf)]
 
