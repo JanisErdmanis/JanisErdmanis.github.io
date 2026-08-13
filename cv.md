@@ -72,6 +72,16 @@ CV
 
 ## Conferences
 
+- **Jānis Erdmanis. **Deniable Vote Updating with Eligibility
+Verifiability via Trapdoor Chains.** EVoteID 2026. \\
+  [[paper](../artifacts/EVOTEID-2026-paper.pdf)]
+
+- **Jānis Erdmanis**. *Jumbo Julia distribution.* JuliaCon 2026. \\ 
+  [[GitHub](https://github.com/JanisErdmanis/Jumbo) | [slides](../artifacts/JuliaCon2026-Jumbo/)
+
+- **Jānis Erdmanis**. *AppBundler 1.0 - Bundle your Julia application and beyond.* JuliaCon 2026. \\ 
+  [[GitHub](https://github.com/PeaceFounder/AppBundler.jl) | [slides](../artifacts/JuliaCon2026-AppBundler)]
+
 - **Jānis Erdmanis.** *Unconditional Individual Verifiability with Receipt Freeness via Post-Cast Isolation.* EVoteID 2025. \
   [[poster](../artifacts/EVOTEID-2025-poster.pdf) | [preprint](https://eprint.iacr.org/2025/1186)]
 
