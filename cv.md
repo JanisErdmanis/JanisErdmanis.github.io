@@ -14,18 +14,22 @@ CV
 **GitHub:** JanisErdmanis \\
 **Portfolio** janiserdmanis.org
 
+
 ## Work Experience
 
-- **2025 - Current** Open Source AppBundler project - Sole Developer [funded via NLNET](https://nlnet.nl/project/Julia-AppBundler/)
+* **2025 – Present** **Open Source AppBundler Project** — Sole Developer, funded by NLnet through the [Julia-AppBundler](https://nlnet.nl/project/Julia-AppBundler/) and [AppBundler Expansion](https://nlnet.nl/project/AppBundler-expansion/) grants
 
-    - Developing tooling to create native, self-contained installers for Julia GUI applications
-    - Independently designed, implemented, and managed all aspects of the project
-    - Successfully secured competitive funding through NLNET Foundation
+  * Developing tooling for creating native, self-contained installers through cross-compilable, open-source build pipelines
+  * Independently designing, implementing, and managing all aspects of the project, from architecture and development to release and maintenance
+  * Successfully secured competitive funding from the NLnet Foundation
 
-- **2017 - 2021** Quantum effects of superconducting phase, TU Delft, NL (s. Yuli Nazarov)
-- **2016** Summer internship at SUSY data analysis group, CERN, CH (s. Simone Amoroso)
-- **2015 - 2017** Magnetic micro-droplet in a rotating field, University of Latvia, LV (s. Andrejs Cebers)
-- **2014 - 2015** Electron on-demand emission, University of Latvia, LV (s. Vyacheslavs Kascheyevs)
+* **2017 – 2021** **Quantum Effects of the Superconducting Phase**, TU Delft, Netherlands — Supervisor: Yuli Nazarov
+
+* **2016** **Summer Internship**, SUSY Data Analysis Group, CERN, Switzerland — Supervisor: Simone Amoroso
+
+* **2015 – 2017** **Magnetic Micro-Droplet in a Rotating Field**, University of Latvia, Latvia — Supervisor: Andrejs Cebers
+
+* **2014 – 2015** **Electron On-Demand Emission**, University of Latvia, Latvia — Supervisor: Vyacheslavs Kascheyevs
 
 ## Education
 
@@ -63,17 +67,16 @@ CV
 - LaplaceBIE.jl: A boundary integral solver for electrostatics and magnetostatics. \\ 
   [[GitHub](https://github.com/JanisErdmanis/LaplaceBIE.jl) | [docs](https://docs.juliahub.com/LaplaceBIE/CDPCh/0.1.0/) | [news](https://discourse.julialang.org/t/ann-surfacetopology-jl-laplacebie-jl-and-eltopo-jl/28233)]
 
-## Personal interests
+<!-- ## Personal interests -->
 
-- **Sports:** swimming, running, cycling, skate skiing and snowboarding
-- **Reading:** fiction, political economics, philosophy and anthropology
-- **DIY:** electrical wiring, solar, open source deployments, woodworking
-- **Cryptography and Security:** public key cryptography, zero-knowledge proofs, blind signatures, authentification protocols and digital identity, bulletin boards, E2E verifiable e-voting systems
+<!-- - **Sports:** swimming, running, cycling, skate skiing and snowboarding -->
+<!-- - **Reading:** fiction, political economics, philosophy and anthropology -->
+<!-- - **DIY:** electrical wiring, solar, open source deployments, woodworking -->
+<!-- - **Cryptography and Security:** public key cryptography, zero-knowledge proofs, blind signatures, authentification protocols and digital identity, bulletin boards, E2E verifiable e-voting systems -->
 
 ## Conferences
 
-- **Jānis Erdmanis**. Deniable Vote Updating with Eligibility
-Verifiability via Trapdoor Chains.** EVoteID 2026. \\
+- **Jānis Erdmanis**. *Deniable Vote Updating with Eligibility Verifiability via Trapdoor Chains.* EVoteID 2026. \\
   [[paper](../artifacts/EVOTEID-2026-paper.pdf)]
 
 - **Jānis Erdmanis**. *Jumbo Julia distribution.* JuliaCon 2026. \\ 
