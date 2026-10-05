@@ -23,15 +23,15 @@
 
 <item>
   <title>
-    <![CDATA[  Julia type system and multiple dispatch  ]]>
+    <![CDATA[  The quantum fluctuations in the vicinity of Weyl point  ]]>
   </title>
-  <link> https://janiserdmanis.org/blog/julia-experience/index.html </link>
-  <guid> https://janiserdmanis.org/blog/julia-experience/index.html </guid>
+  <link> https://janiserdmanis.org/blog/research-weyl-disk/index.html </link>
+  <guid> https://janiserdmanis.org/blog/research-weyl-disk/index.html </guid>
   <description>
-    <![CDATA[  I used to be a Python advocate as having an interpreter, meaningful error messages, docstrings, and easy library installation made the scope of what I could build expand tremendously. But in 2015, the Cython, Numba or C interop story became unbearable for my MSc thesis project, and I made a plunge into Julia, and I never looked back. As saying says, you come to Julia for performance and stay there multiple dispatch, type system, REPL, Pkg and other neat things.  ]]>
+    <![CDATA[  Superconductors exhibit unique charge transport, leading to intriguing interface phenomena with normal metals. Electrons and holes form closed trajectories at specific energies, known as Andreev-bound states. It is possible to envision a situation where Andreev-bound states can cross in superconducting phase space, forming Weyl points. But what if the superconducting phases are not fixed and are subject to quantum fluctuations near those Weyl points?  ]]>
   </description>  
     
-  <pubDate>Sun, 23 Aug 2026 00:00:00 +0000</pubDate>  
+  <pubDate>Mon, 05 Oct 2026 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -42,15 +42,15 @@
 
 <item>
   <title>
-    <![CDATA[  The quantum fluctuations in the vicinity of Weyl point  ]]>
+    <![CDATA[  Julia type system and multiple dispatch  ]]>
   </title>
-  <link> https://janiserdmanis.org/blog/research-weyl-disk/index.html </link>
-  <guid> https://janiserdmanis.org/blog/research-weyl-disk/index.html </guid>
+  <link> https://janiserdmanis.org/blog/julia-experience/index.html </link>
+  <guid> https://janiserdmanis.org/blog/julia-experience/index.html </guid>
   <description>
-    <![CDATA[  Superconductors exhibit unique charge transport, leading to intriguing interface phenomena with normal metals. Electrons and holes form closed trajectories at specific energies, known as Andreev-bound states. It is possible to envision a situation where Andreev-bound states can cross in superconducting phase space, forming Weyl points. But what if the superconducting phases are not fixed and are subject to quantum fluctuations near those Weyl points?  ]]>
+    <![CDATA[  I used to be a Python advocate as having an interpreter, meaningful error messages, docstrings, and easy library installation made the scope of what I could build expand tremendously. But in 2015, the Cython, Numba or C interop story became unbearable for my MSc thesis project, and I made a plunge into Julia, and I never looked back. As saying says, you come to Julia for performance and stay there multiple dispatch, type system, REPL, Pkg and other neat things.  ]]>
   </description>  
     
-  <pubDate>Sun, 23 Aug 2026 00:00:00 +0000</pubDate>  
+  <pubDate>Mon, 05 Oct 2026 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
