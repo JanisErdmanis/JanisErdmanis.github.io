@@ -6,6 +6,8 @@ tags = ["evote"]
 
 # Reflection on E-Vote-ID 2026
 
+![Cover](presentation.jpeg)
+
 It was a great joy to attend this year's E-Vote-ID conference in Tallinn. It also left me with some sorrow: as things stand, I will most likely not be able to attend next year's edition in Toronto, because paying for it out of my own pocket would be prohibitively expensive. That is a pity, as I already have several ideas I would like to write up and submit there.
 
 ## The conference
